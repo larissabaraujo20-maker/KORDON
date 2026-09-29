@@ -520,8 +520,14 @@
       <span class="disc"><img src="img/panda.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb" type="button" data-cat="feiras" data-img="img/d23.jpg" data-gallery="d23-transamerica-expo-center" aria-label="Ampliar foto de projeto: D23 — Transamerica Expo Center" data-title="D23 — Transamerica Expo Center" title="D23 — Transamerica Expo Center">
       <span class="disc"><img src="img/d23.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
-    <button class="orb" type="button" data-cat="feiras" data-img="img/noiva.jpg" data-gallery="ccxp-warner-2025" aria-label="Ampliar foto de projeto: CCXP Warner Bros 2025" data-title="CCXP Warner Bros 2025" title="CCXP Warner Bros 2025">
+    <button class="orb" type="button" data-cat="feiras" data-img="img/noiva.jpg" data-gallery="ccxp-warner-noiva" aria-label="Ampliar foto de projeto: CCXP Warner Bros — A Noiva" data-title="CCXP Warner Bros — A Noiva" title="CCXP Warner Bros — A Noiva">
       <span class="disc"><img src="img/noiva.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
+
+      <button class="orb" type="button" data-cat="feiras" data-img="img/supergirl.jpg" data-gallery="ccxp-warner-supergirl" aria-label="Ampliar foto de projeto: CCXP Warner Bros — Supergirl" data-title="CCXP Warner Bros — Supergirl" title="CCXP Warner Bros — Supergirl">
+      <span class="disc"><img src="img/supergirl.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
+
+      <button class="orb" type="button" data-cat="feiras" data-img="img/mortal.jpg" data-gallery="ccxp-warner-mortal-kombat" aria-label="Ampliar foto de projeto: CCXP Warner Bros — Mortal Kombat" data-title="CCXP Warner Bros — Mortal Kombat" title="CCXP Warner Bros — Mortal Kombat">
+      <span class="disc"><img src="img/mortal.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="premiacoes" data-img="img/bola.jpg" data-gallery="bola-de-prata-2025" aria-label="Ampliar foto de projeto: Bola de Prata 2025" data-title="Bola de Prata 2025" title="Bola de Prata 2025">
       <span class="disc"><img src="img/bola.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="premiacoes" data-img="img/bola24.jpg" data-gallery="bola-de-prata-2024" aria-label="Ampliar foto de projeto: Bola de Prata 2024" data-title="Bola de Prata 2024" title="Bola de Prata 2024">
@@ -871,7 +877,587 @@
   });
 
   // lightbox com galeria de fotos por projeto
-  var GALLERIES = {"byd": ["img/cases/case-byd-1.jpg", "img/cases/case-byd-2.jpg", "img/cases/case-byd-3.jpg", "img/cases/case-byd-4.jpg", "img/cases/case-byd-5.jpg", "img/cases/case-byd-6.jpg", "img/cases/case-byd-7.jpg", "img/cases/case-byd-8.jpg", "img/cases/case-byd-9.jpg", "img/cases/case-byd-10.jpg", "img/cases/case-byd-11.jpg", "img/cases/case-byd-12.jpg", "img/cases/case-byd-13.jpg"], "toy-story-30-anos-trucktour": ["img/cases/case-toy-story-30-anos-trucktour-1.jpg", "img/cases/case-toy-story-30-anos-trucktour-2.jpg", "img/cases/case-toy-story-30-anos-trucktour-3.jpg", "img/cases/case-toy-story-30-anos-trucktour-4.jpg", "img/cases/case-toy-story-30-anos-trucktour-5.jpg", "img/cases/case-toy-story-30-anos-trucktour-6.jpg", "img/cases/case-toy-story-30-anos-trucktour-7.jpg", "img/cases/case-toy-story-30-anos-trucktour-8.jpg", "img/cases/case-toy-story-30-anos-trucktour-9.jpg", "img/cases/case-toy-story-30-anos-trucktour-10.jpg", "img/cases/case-toy-story-30-anos-trucktour-11.jpg", "img/cases/case-toy-story-30-anos-trucktour-12.jpg", "img/cases/case-toy-story-30-anos-trucktour-13.jpg", "img/cases/case-toy-story-30-anos-trucktour-14.jpg", "img/cases/case-toy-story-30-anos-trucktour-15.jpg", "img/cases/case-toy-story-30-anos-trucktour-16.jpg"], "ccxp-2025-hbomax": ["img/cases/case-ccxp-2025-hbomax-1.jpg", "img/cases/case-ccxp-2025-hbomax-2.jpg", "img/cases/case-ccxp-2025-hbomax-3.jpg", "img/cases/case-ccxp-2025-hbomax-4.jpg", "img/cases/case-ccxp-2025-hbomax-5.jpg", "img/cases/case-ccxp-2025-hbomax-6.jpg", "img/cases/case-ccxp-2025-hbomax-7.jpg", "img/cases/case-ccxp-2025-hbomax-8.jpg", "img/cases/case-ccxp-2025-hbomax-9.jpg", "img/cases/case-ccxp-2025-hbomax-10.jpg", "img/cases/case-ccxp-2025-hbomax-11.jpg", "img/cases/case-ccxp-2025-hbomax-12.jpg", "img/cases/case-ccxp-2025-hbomax-13.jpg", "img/cases/case-ccxp-2025-hbomax-14.jpg", "img/cases/case-ccxp-2025-hbomax-15.jpg", "img/cases/case-ccxp-2025-hbomax-16.jpg", "img/cases/case-ccxp-2025-hbomax-17.jpg", "img/cases/case-ccxp-2025-hbomax-18.jpg", "img/cases/case-ccxp-2025-hbomax-19.jpg", "img/cases/case-ccxp-2025-hbomax-20.jpg", "img/cases/case-ccxp-2025-hbomax-21.jpg", "img/cases/case-ccxp-2025-hbomax-22.jpg", "img/cases/case-ccxp-2025-hbomax-23.jpg", "img/cases/case-ccxp-2025-hbomax-24.jpg", "img/cases/case-ccxp-2025-hbomax-25.jpg", "img/cases/case-ccxp-2025-hbomax-26.jpg", "img/cases/case-ccxp-2025-hbomax-27.jpg", "img/cases/case-ccxp-2025-hbomax-28.jpg", "img/cases/case-ccxp-2025-hbomax-29.jpg", "img/cases/case-ccxp-2025-hbomax-30.jpg", "img/cases/case-ccxp-2025-hbomax-31.jpg", "img/cases/case-ccxp-2025-hbomax-32.jpg", "img/cases/case-ccxp-2025-hbomax-33.jpg"], "roda-rico-kung-fu-panda": ["img/cases/case-roda-rico-kung-fu-panda-1.jpg", "img/cases/case-roda-rico-kung-fu-panda-2.jpg", "img/cases/case-roda-rico-kung-fu-panda-3.jpg", "img/cases/case-roda-rico-kung-fu-panda-4.jpg", "img/cases/case-roda-rico-kung-fu-panda-5.jpg", "img/cases/case-roda-rico-kung-fu-panda-6.jpg", "img/cases/case-roda-rico-kung-fu-panda-7.jpg", "img/cases/case-roda-rico-kung-fu-panda-8.jpg", "img/cases/case-roda-rico-kung-fu-panda-9.jpg", "img/cases/case-roda-rico-kung-fu-panda-10.jpg", "img/cases/case-roda-rico-kung-fu-panda-11.jpg", "img/cases/case-roda-rico-kung-fu-panda-12.jpg", "img/cases/case-roda-rico-kung-fu-panda-13.jpg", "img/cases/case-roda-rico-kung-fu-panda-14.jpg", "img/cases/case-roda-rico-kung-fu-panda-15.jpg", "img/cases/case-roda-rico-kung-fu-panda-16.jpg", "img/cases/case-roda-rico-kung-fu-panda-17.jpg", "img/cases/case-roda-rico-kung-fu-panda-18.jpg"], "confra-disney-e-espn-2025": ["img/cases/case-confra-disney-e-espn-2025-1.jpg", "img/cases/case-confra-disney-e-espn-2025-2.jpg", "img/cases/case-confra-disney-e-espn-2025-3.jpg", "img/cases/case-confra-disney-e-espn-2025-4.jpg", "img/cases/case-confra-disney-e-espn-2025-5.jpg", "img/cases/case-confra-disney-e-espn-2025-6.jpg", "img/cases/case-confra-disney-e-espn-2025-7.jpg", "img/cases/case-confra-disney-e-espn-2025-8.jpg", "img/cases/case-confra-disney-e-espn-2025-9.jpg", "img/cases/case-confra-disney-e-espn-2025-10.jpg"], "netshoes-run-df": ["img/cases/case-netshoes-run-df-1.jpg", "img/cases/case-netshoes-run-df-2.jpg", "img/cases/case-netshoes-run-df-3.jpg", "img/cases/case-netshoes-run-df-4.jpg", "img/cases/case-netshoes-run-df-5.jpg", "img/cases/case-netshoes-run-df-6.jpg", "img/cases/case-netshoes-run-df-7.jpg", "img/cases/case-netshoes-run-df-8.jpg", "img/cases/case-netshoes-run-df-9.jpg", "img/cases/case-netshoes-run-df-10.jpg", "img/cases/case-netshoes-run-df-11.jpg", "img/cases/case-netshoes-run-df-12.jpg", "img/cases/case-netshoes-run-df-13.jpg", "img/cases/case-netshoes-run-df-14.jpg", "img/cases/case-netshoes-run-df-15.jpg", "img/cases/case-netshoes-run-df-16.jpg"], "bola-de-prata-2024": ["img/cases/case-bola-de-prata-2024-1.jpg", "img/cases/case-bola-de-prata-2024-2.jpg", "img/cases/case-bola-de-prata-2024-3.jpg", "img/cases/case-bola-de-prata-2024-4.jpg", "img/cases/case-bola-de-prata-2024-5.jpg", "img/cases/case-bola-de-prata-2024-6.jpg", "img/cases/case-bola-de-prata-2024-7.jpg", "img/cases/case-bola-de-prata-2024-8.jpg", "img/cases/case-bola-de-prata-2024-9.jpg"], "house-of-mouse": ["img/cases/case-house-of-mouse-1.jpg", "img/cases/case-house-of-mouse-2.jpg", "img/cases/case-house-of-mouse-3.jpg", "img/cases/case-house-of-mouse-4.jpg", "img/cases/case-house-of-mouse-5.jpg", "img/cases/case-house-of-mouse-6.jpg", "img/cases/case-house-of-mouse-7.jpg", "img/cases/case-house-of-mouse-8.jpg", "img/cases/case-house-of-mouse-9.jpg", "img/cases/case-house-of-mouse-10.jpg", "img/cases/case-house-of-mouse-11.jpg", "img/cases/case-house-of-mouse-12.jpg", "img/cases/case-house-of-mouse-13.jpg", "img/cases/case-house-of-mouse-14.jpg", "img/cases/case-house-of-mouse-15.jpg", "img/cases/case-house-of-mouse-16.jpg"], "bola-de-prata-2025": ["img/cases/case-bola-de-prata-2025-1.jpg", "img/cases/case-bola-de-prata-2025-2.jpg", "img/cases/case-bola-de-prata-2025-3.jpg", "img/cases/case-bola-de-prata-2025-4.jpg", "img/cases/case-bola-de-prata-2025-5.jpg", "img/cases/case-bola-de-prata-2025-6.jpg", "img/cases/case-bola-de-prata-2025-7.jpg", "img/cases/case-bola-de-prata-2025-8.jpg", "img/cases/case-bola-de-prata-2025-9.jpg", "img/cases/case-bola-de-prata-2025-10.jpg", "img/cases/case-bola-de-prata-2025-11.jpg"], "disney-sunset": ["img/cases/case-disney-sunset-1.jpg", "img/cases/case-disney-sunset-2.jpg", "img/cases/case-disney-sunset-3.jpg", "img/cases/case-disney-sunset-4.jpg", "img/cases/case-disney-sunset-5.jpg", "img/cases/case-disney-sunset-6.jpg", "img/cases/case-disney-sunset-7.jpg", "img/cases/case-disney-sunset-8.jpg", "img/cases/case-disney-sunset-9.jpg", "img/cases/case-disney-sunset-10.jpg", "img/cases/case-disney-sunset-11.jpg", "img/cases/case-disney-sunset-12.jpg", "img/cases/case-disney-sunset-13.jpg", "img/cases/case-disney-sunset-14.jpg", "img/cases/case-disney-sunset-15.jpg", "img/cases/case-disney-sunset-16.jpg"], "dia-da-familia-2024": ["img/cases/case-dia-da-familia-2024-1.jpg", "img/cases/case-dia-da-familia-2024-2.jpg", "img/cases/case-dia-da-familia-2024-3.jpg", "img/cases/case-dia-da-familia-2024-4.jpg", "img/cases/case-dia-da-familia-2024-5.jpg", "img/cases/case-dia-da-familia-2024-6.jpg", "img/cases/case-dia-da-familia-2024-7.jpg", "img/cases/case-dia-da-familia-2024-8.jpg", "img/cases/case-dia-da-familia-2024-9.jpg", "img/cases/case-dia-da-familia-2024-10.jpg", "img/cases/case-dia-da-familia-2024-11.jpg", "img/cases/case-dia-da-familia-2024-12.jpg", "img/cases/case-dia-da-familia-2024-13.jpg", "img/cases/case-dia-da-familia-2024-14.jpg", "img/cases/case-dia-da-familia-2024-15.jpg", "img/cases/case-dia-da-familia-2024-16.jpg", "img/cases/case-dia-da-familia-2024-17.jpg", "img/cases/case-dia-da-familia-2024-18.jpg", "img/cases/case-dia-da-familia-2024-19.jpg", "img/cases/case-dia-da-familia-2024-20.jpg", "img/cases/case-dia-da-familia-2024-21.jpg"], "niad": ["img/cases/case-niad-1.jpg", "img/cases/case-niad-2.jpg", "img/cases/case-niad-3.jpg", "img/cases/case-niad-4.jpg", "img/cases/case-niad-5.jpg", "img/cases/case-niad-6.jpg", "img/cases/case-niad-7.jpg", "img/cases/case-niad-8.jpg", "img/cases/case-niad-9.jpg", "img/cases/case-niad-10.jpg", "img/cases/case-niad-11.jpg", "img/cases/case-niad-12.jpg"], "stand-itaipu-web-summit": ["img/cases/case-stand-itaipu-web-summit-1.jpg", "img/cases/case-stand-itaipu-web-summit-2.jpg", "img/cases/case-stand-itaipu-web-summit-3.jpg", "img/cases/case-stand-itaipu-web-summit-4.jpg", "img/cases/case-stand-itaipu-web-summit-5.jpg", "img/cases/case-stand-itaipu-web-summit-6.jpg", "img/cases/case-stand-itaipu-web-summit-7.jpg", "img/cases/case-stand-itaipu-web-summit-8.jpg", "img/cases/case-stand-itaipu-web-summit-9.jpg", "img/cases/case-stand-itaipu-web-summit-10.jpg", "img/cases/case-stand-itaipu-web-summit-11.jpg", "img/cases/case-stand-itaipu-web-summit-12.jpg", "img/cases/case-stand-itaipu-web-summit-13.jpg", "img/cases/case-stand-itaipu-web-summit-14.jpg", "img/cases/case-stand-itaipu-web-summit-15.jpg", "img/cases/case-stand-itaipu-web-summit-16.jpg", "img/cases/case-stand-itaipu-web-summit-17.jpg", "img/cases/case-stand-itaipu-web-summit-18.jpg", "img/cases/case-stand-itaipu-web-summit-19.jpg", "img/cases/case-stand-itaipu-web-summit-20.jpg"], "roda-rico-patos": ["img/cases/case-roda-rico-patos-1.jpg", "img/cases/case-roda-rico-patos-2.jpg", "img/cases/case-roda-rico-patos-3.jpg", "img/cases/case-roda-rico-patos-4.jpg", "img/cases/case-roda-rico-patos-5.jpg", "img/cases/case-roda-rico-patos-6.jpg", "img/cases/case-roda-rico-patos-7.jpg", "img/cases/case-roda-rico-patos-8.jpg", "img/cases/case-roda-rico-patos-9.jpg", "img/cases/case-roda-rico-patos-10.jpg", "img/cases/case-roda-rico-patos-11.jpg", "img/cases/case-roda-rico-patos-12.jpg", "img/cases/case-roda-rico-patos-13.jpg", "img/cases/case-roda-rico-patos-14.jpg", "img/cases/case-roda-rico-patos-15.jpg", "img/cases/case-roda-rico-patos-16.jpg", "img/cases/case-roda-rico-patos-17.jpg", "img/cases/case-roda-rico-patos-18.jpg", "img/cases/case-roda-rico-patos-19.jpg", "img/cases/case-roda-rico-patos-20.jpg", "img/cases/case-roda-rico-patos-21.jpg", "img/cases/case-roda-rico-patos-22.jpg"], "harry-potter-25-anos-de-magia": ["img/cases/case-harry-potter-25-anos-de-magia-1.jpg", "img/cases/case-harry-potter-25-anos-de-magia-2.jpg", "img/cases/case-harry-potter-25-anos-de-magia-3.jpg", "img/cases/case-harry-potter-25-anos-de-magia-4.jpg", "img/cases/case-harry-potter-25-anos-de-magia-5.jpg", "img/cases/case-harry-potter-25-anos-de-magia-6.jpg", "img/cases/case-harry-potter-25-anos-de-magia-7.jpg", "img/cases/case-harry-potter-25-anos-de-magia-8.jpg", "img/cases/case-harry-potter-25-anos-de-magia-9.jpg", "img/cases/case-harry-potter-25-anos-de-magia-10.jpg", "img/cases/case-harry-potter-25-anos-de-magia-11.jpg", "img/cases/case-harry-potter-25-anos-de-magia-12.jpg", "img/cases/case-harry-potter-25-anos-de-magia-13.jpg", "img/cases/case-harry-potter-25-anos-de-magia-14.jpg", "img/cases/case-harry-potter-25-anos-de-magia-15.jpg", "img/cases/case-harry-potter-25-anos-de-magia-16.jpg", "img/cases/case-harry-potter-25-anos-de-magia-17.jpg", "img/cases/case-harry-potter-25-anos-de-magia-18.jpg", "img/cases/case-harry-potter-25-anos-de-magia-19.jpg", "img/cases/case-harry-potter-25-anos-de-magia-20.jpg", "img/cases/case-harry-potter-25-anos-de-magia-21.jpg", "img/cases/case-harry-potter-25-anos-de-magia-22.jpg", "img/cases/case-harry-potter-25-anos-de-magia-23.jpg", "img/cases/case-harry-potter-25-anos-de-magia-24.jpg", "img/cases/case-harry-potter-25-anos-de-magia-25.jpg", "img/cases/case-harry-potter-25-anos-de-magia-26.jpg", "img/cases/case-harry-potter-25-anos-de-magia-27.jpg", "img/cases/case-harry-potter-25-anos-de-magia-28.jpg", "img/cases/case-harry-potter-25-anos-de-magia-29.jpg"], "d23-transamerica-expo-center": ["img/cases/case-d23-transamerica-expo-center-1.jpg", "img/cases/case-d23-transamerica-expo-center-2.jpg", "img/cases/case-d23-transamerica-expo-center-3.jpg", "img/cases/case-d23-transamerica-expo-center-4.jpg", "img/cases/case-d23-transamerica-expo-center-5.jpg", "img/cases/case-d23-transamerica-expo-center-6.jpg", "img/cases/case-d23-transamerica-expo-center-7.jpg", "img/cases/case-d23-transamerica-expo-center-8.jpg", "img/cases/case-d23-transamerica-expo-center-9.jpg"], "cix": ["img/cases/case-cix-1.jpg", "img/cases/case-cix-2.jpg", "img/cases/case-cix-3.jpg", "img/cases/case-cix-4.jpg", "img/cases/case-cix-5.jpg", "img/cases/case-cix-6.jpg", "img/cases/case-cix-7.jpg", "img/cases/case-cix-8.jpg", "img/cases/case-cix-9.jpg", "img/cases/case-cix-10.jpg", "img/cases/case-cix-11.jpg", "img/cases/case-cix-12.jpg", "img/cases/case-cix-13.jpg", "img/cases/case-cix-14.jpg", "img/cases/case-cix-15.jpg", "img/cases/case-cix-16.jpg", "img/cases/case-cix-17.jpg", "img/cases/case-cix-18.jpg"], "abal": ["img/cases/case-abal-1.jpg", "img/cases/case-abal-2.jpg", "img/cases/case-abal-3.jpg", "img/cases/case-abal-4.jpg", "img/cases/case-abal-5.jpg", "img/cases/case-abal-6.jpg", "img/cases/case-abal-7.jpg", "img/cases/case-abal-8.jpg", "img/cases/case-abal-9.jpg", "img/cases/case-abal-10.jpg", "img/cases/case-abal-11.jpg", "img/cases/case-abal-12.jpg", "img/cases/case-abal-13.jpg", "img/cases/case-abal-14.jpg", "img/cases/case-abal-15.jpg", "img/cases/case-abal-16.jpg", "img/cases/case-abal-17.jpg", "img/cases/case-abal-18.jpg", "img/cases/case-abal-19.jpg", "img/cases/case-abal-20.jpg", "img/cases/case-abal-21.jpg", "img/cases/case-abal-22.jpg", "img/cases/case-abal-23.jpg", "img/cases/case-abal-24.jpg", "img/cases/case-abal-25.jpg"], "employee-latam-disney": ["img/cases/case-employee-latam-disney-1.jpg", "img/cases/case-employee-latam-disney-2.jpg", "img/cases/case-employee-latam-disney-3.jpg", "img/cases/case-employee-latam-disney-4.jpg", "img/cases/case-employee-latam-disney-5.jpg", "img/cases/case-employee-latam-disney-6.jpg", "img/cases/case-employee-latam-disney-7.jpg", "img/cases/case-employee-latam-disney-8.jpg", "img/cases/case-employee-latam-disney-9.jpg", "img/cases/case-employee-latam-disney-10.jpg", "img/cases/case-employee-latam-disney-11.jpg", "img/cases/case-employee-latam-disney-12.jpg", "img/cases/case-employee-latam-disney-13.jpg", "img/cases/case-employee-latam-disney-14.jpg", "img/cases/case-employee-latam-disney-15.jpg", "img/cases/case-employee-latam-disney-16.jpg", "img/cases/case-employee-latam-disney-17.jpg", "img/cases/case-employee-latam-disney-18.jpg", "img/cases/case-employee-latam-disney-19.jpg", "img/cases/case-employee-latam-disney-20.jpg", "img/cases/case-employee-latam-disney-21.jpg", "img/cases/case-employee-latam-disney-22.jpg", "img/cases/case-employee-latam-disney-23.jpg", "img/cases/case-employee-latam-disney-24.jpg", "img/cases/case-employee-latam-disney-25.jpg"], "kings-league-netshoes": ["img/cases/case-kings-league-netshoes-1.jpg"], "batman-day": [{"src": "img/cases/case-batman-day-1.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-2.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-3.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-4.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-5.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-6.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-7.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-8.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-9.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-10.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-11.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-12.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-13.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-14.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-15.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-16.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-17.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-18.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-19.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-20.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-21.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-22.jpg", "label": "Praça dos Arcos"}], "bauducco": ["img/cases/case-bauducco-1.jpg", "img/cases/case-bauducco-2.jpg", "img/cases/case-bauducco-3.jpg", "img/cases/case-bauducco-4.jpg", "img/cases/case-bauducco-5.jpg", "img/cases/case-bauducco-6.jpg", "img/cases/case-bauducco-7.jpg", "img/cases/case-bauducco-8.jpg", "img/cases/case-bauducco-9.jpg", "img/cases/case-bauducco-10.jpg", "img/cases/case-bauducco-11.jpg", "img/cases/case-bauducco-12.jpg", "img/cases/case-bauducco-13.jpg"], "ccxp-warner-2025": [{"src": "img/noiva.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-1.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-2.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-3.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-4.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-5.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-6.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-7.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-8.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-9.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-10.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-11.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-12.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-13.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-14.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-15.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-16.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-17.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-18.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-19.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-20.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-21.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-22.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-23.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-24.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-25.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-26.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-27.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-28.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-29.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-30.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-31.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-32.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-33.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-34.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-35.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-1.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-2.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-3.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-4.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-5.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-6.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-7.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-8.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-9.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-10.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-11.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-12.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-13.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-14.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-15.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-16.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-1.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-2.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-3.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-4.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-5.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-6.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-7.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-8.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-9.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-10.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-11.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-12.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-13.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-14.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-15.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-16.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-17.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-18.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-19.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-20.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-21.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-22.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-23.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-24.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-25.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-26.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-27.jpg", "label": "Estande do Mortal Kombat"}], "cop30": ["img/cases/case-cop30-1.jpg", "img/cases/case-cop30-2.jpg", "img/cases/case-cop30-3.jpg", "img/cases/case-cop30-4.jpg", "img/cases/case-cop30-5.jpg", "img/cases/case-cop30-6.jpg", "img/cases/case-cop30-7.jpg"]}
+  var GALLERIES = {
+  "byd": [
+    "img/cases/case-byd-1.jpg",
+    "img/cases/case-byd-2.jpg",
+    "img/cases/case-byd-3.jpg",
+    "img/cases/case-byd-4.jpg",
+    "img/cases/case-byd-5.jpg",
+    "img/cases/case-byd-6.jpg",
+    "img/cases/case-byd-7.jpg",
+    "img/cases/case-byd-8.jpg",
+    "img/cases/case-byd-9.jpg",
+    "img/cases/case-byd-10.jpg",
+    "img/cases/case-byd-11.jpg",
+    "img/cases/case-byd-12.jpg",
+    "img/cases/case-byd-13.jpg"
+  ],
+  "toy-story-30-anos-trucktour": [
+    "img/cases/case-toy-story-30-anos-trucktour-1.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-2.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-3.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-4.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-5.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-6.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-7.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-8.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-9.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-10.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-11.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-12.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-13.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-14.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-15.jpg",
+    "img/cases/case-toy-story-30-anos-trucktour-16.jpg"
+  ],
+  "ccxp-2025-hbomax": [
+    "img/cases/case-ccxp-2025-hbomax-1.jpg",
+    "img/cases/case-ccxp-2025-hbomax-2.jpg",
+    "img/cases/case-ccxp-2025-hbomax-3.jpg",
+    "img/cases/case-ccxp-2025-hbomax-4.jpg",
+    "img/cases/case-ccxp-2025-hbomax-5.jpg",
+    "img/cases/case-ccxp-2025-hbomax-6.jpg",
+    "img/cases/case-ccxp-2025-hbomax-7.jpg",
+    "img/cases/case-ccxp-2025-hbomax-8.jpg",
+    "img/cases/case-ccxp-2025-hbomax-9.jpg",
+    "img/cases/case-ccxp-2025-hbomax-10.jpg",
+    "img/cases/case-ccxp-2025-hbomax-11.jpg",
+    "img/cases/case-ccxp-2025-hbomax-12.jpg",
+    "img/cases/case-ccxp-2025-hbomax-13.jpg",
+    "img/cases/case-ccxp-2025-hbomax-14.jpg",
+    "img/cases/case-ccxp-2025-hbomax-15.jpg",
+    "img/cases/case-ccxp-2025-hbomax-16.jpg",
+    "img/cases/case-ccxp-2025-hbomax-17.jpg",
+    "img/cases/case-ccxp-2025-hbomax-18.jpg",
+    "img/cases/case-ccxp-2025-hbomax-19.jpg",
+    "img/cases/case-ccxp-2025-hbomax-20.jpg",
+    "img/cases/case-ccxp-2025-hbomax-21.jpg",
+    "img/cases/case-ccxp-2025-hbomax-22.jpg",
+    "img/cases/case-ccxp-2025-hbomax-23.jpg",
+    "img/cases/case-ccxp-2025-hbomax-24.jpg",
+    "img/cases/case-ccxp-2025-hbomax-25.jpg",
+    "img/cases/case-ccxp-2025-hbomax-26.jpg",
+    "img/cases/case-ccxp-2025-hbomax-27.jpg",
+    "img/cases/case-ccxp-2025-hbomax-28.jpg",
+    "img/cases/case-ccxp-2025-hbomax-29.jpg",
+    "img/cases/case-ccxp-2025-hbomax-30.jpg",
+    "img/cases/case-ccxp-2025-hbomax-31.jpg",
+    "img/cases/case-ccxp-2025-hbomax-32.jpg",
+    "img/cases/case-ccxp-2025-hbomax-33.jpg"
+  ],
+  "roda-rico-kung-fu-panda": [
+    "img/cases/case-roda-rico-kung-fu-panda-1.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-2.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-3.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-4.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-5.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-6.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-7.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-8.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-9.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-10.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-11.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-12.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-13.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-14.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-15.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-16.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-17.jpg",
+    "img/cases/case-roda-rico-kung-fu-panda-18.jpg"
+  ],
+  "confra-disney-e-espn-2025": [
+    "img/cases/case-confra-disney-e-espn-2025-1.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-2.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-3.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-4.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-5.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-6.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-7.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-8.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-9.jpg",
+    "img/cases/case-confra-disney-e-espn-2025-10.jpg"
+  ],
+  "netshoes-run-df": [
+    "img/cases/case-netshoes-run-df-1.jpg",
+    "img/cases/case-netshoes-run-df-2.jpg",
+    "img/cases/case-netshoes-run-df-3.jpg",
+    "img/cases/case-netshoes-run-df-4.jpg",
+    "img/cases/case-netshoes-run-df-5.jpg",
+    "img/cases/case-netshoes-run-df-6.jpg",
+    "img/cases/case-netshoes-run-df-7.jpg",
+    "img/cases/case-netshoes-run-df-8.jpg",
+    "img/cases/case-netshoes-run-df-9.jpg",
+    "img/cases/case-netshoes-run-df-10.jpg",
+    "img/cases/case-netshoes-run-df-11.jpg",
+    "img/cases/case-netshoes-run-df-12.jpg",
+    "img/cases/case-netshoes-run-df-13.jpg",
+    "img/cases/case-netshoes-run-df-14.jpg",
+    "img/cases/case-netshoes-run-df-15.jpg",
+    "img/cases/case-netshoes-run-df-16.jpg"
+  ],
+  "bola-de-prata-2024": [
+    "img/cases/case-bola-de-prata-2024-1.jpg",
+    "img/cases/case-bola-de-prata-2024-2.jpg",
+    "img/cases/case-bola-de-prata-2024-3.jpg",
+    "img/cases/case-bola-de-prata-2024-4.jpg",
+    "img/cases/case-bola-de-prata-2024-5.jpg",
+    "img/cases/case-bola-de-prata-2024-6.jpg",
+    "img/cases/case-bola-de-prata-2024-7.jpg",
+    "img/cases/case-bola-de-prata-2024-8.jpg",
+    "img/cases/case-bola-de-prata-2024-9.jpg"
+  ],
+  "house-of-mouse": [
+    "img/cases/case-house-of-mouse-1.jpg",
+    "img/cases/case-house-of-mouse-2.jpg",
+    "img/cases/case-house-of-mouse-3.jpg",
+    "img/cases/case-house-of-mouse-4.jpg",
+    "img/cases/case-house-of-mouse-5.jpg",
+    "img/cases/case-house-of-mouse-6.jpg",
+    "img/cases/case-house-of-mouse-7.jpg",
+    "img/cases/case-house-of-mouse-8.jpg",
+    "img/cases/case-house-of-mouse-9.jpg",
+    "img/cases/case-house-of-mouse-10.jpg",
+    "img/cases/case-house-of-mouse-11.jpg",
+    "img/cases/case-house-of-mouse-12.jpg",
+    "img/cases/case-house-of-mouse-13.jpg",
+    "img/cases/case-house-of-mouse-14.jpg",
+    "img/cases/case-house-of-mouse-15.jpg",
+    "img/cases/case-house-of-mouse-16.jpg"
+  ],
+  "bola-de-prata-2025": [
+    "img/cases/case-bola-de-prata-2025-1.jpg",
+    "img/cases/case-bola-de-prata-2025-2.jpg",
+    "img/cases/case-bola-de-prata-2025-3.jpg",
+    "img/cases/case-bola-de-prata-2025-4.jpg",
+    "img/cases/case-bola-de-prata-2025-5.jpg",
+    "img/cases/case-bola-de-prata-2025-6.jpg",
+    "img/cases/case-bola-de-prata-2025-7.jpg",
+    "img/cases/case-bola-de-prata-2025-8.jpg",
+    "img/cases/case-bola-de-prata-2025-9.jpg",
+    "img/cases/case-bola-de-prata-2025-10.jpg",
+    "img/cases/case-bola-de-prata-2025-11.jpg"
+  ],
+  "disney-sunset": [
+    "img/cases/case-disney-sunset-1.jpg",
+    "img/cases/case-disney-sunset-2.jpg",
+    "img/cases/case-disney-sunset-3.jpg",
+    "img/cases/case-disney-sunset-4.jpg",
+    "img/cases/case-disney-sunset-5.jpg",
+    "img/cases/case-disney-sunset-6.jpg",
+    "img/cases/case-disney-sunset-7.jpg",
+    "img/cases/case-disney-sunset-8.jpg",
+    "img/cases/case-disney-sunset-9.jpg",
+    "img/cases/case-disney-sunset-10.jpg",
+    "img/cases/case-disney-sunset-11.jpg",
+    "img/cases/case-disney-sunset-12.jpg",
+    "img/cases/case-disney-sunset-13.jpg",
+    "img/cases/case-disney-sunset-14.jpg",
+    "img/cases/case-disney-sunset-15.jpg",
+    "img/cases/case-disney-sunset-16.jpg"
+  ],
+  "dia-da-familia-2024": [
+    "img/cases/case-dia-da-familia-2024-1.jpg",
+    "img/cases/case-dia-da-familia-2024-2.jpg",
+    "img/cases/case-dia-da-familia-2024-3.jpg",
+    "img/cases/case-dia-da-familia-2024-4.jpg",
+    "img/cases/case-dia-da-familia-2024-5.jpg",
+    "img/cases/case-dia-da-familia-2024-6.jpg",
+    "img/cases/case-dia-da-familia-2024-7.jpg",
+    "img/cases/case-dia-da-familia-2024-8.jpg",
+    "img/cases/case-dia-da-familia-2024-9.jpg",
+    "img/cases/case-dia-da-familia-2024-10.jpg",
+    "img/cases/case-dia-da-familia-2024-11.jpg",
+    "img/cases/case-dia-da-familia-2024-12.jpg",
+    "img/cases/case-dia-da-familia-2024-13.jpg",
+    "img/cases/case-dia-da-familia-2024-14.jpg",
+    "img/cases/case-dia-da-familia-2024-15.jpg",
+    "img/cases/case-dia-da-familia-2024-16.jpg",
+    "img/cases/case-dia-da-familia-2024-17.jpg",
+    "img/cases/case-dia-da-familia-2024-18.jpg",
+    "img/cases/case-dia-da-familia-2024-19.jpg",
+    "img/cases/case-dia-da-familia-2024-20.jpg",
+    "img/cases/case-dia-da-familia-2024-21.jpg"
+  ],
+  "niad": [
+    "img/cases/case-niad-1.jpg",
+    "img/cases/case-niad-2.jpg",
+    "img/cases/case-niad-3.jpg",
+    "img/cases/case-niad-4.jpg",
+    "img/cases/case-niad-5.jpg",
+    "img/cases/case-niad-6.jpg",
+    "img/cases/case-niad-7.jpg",
+    "img/cases/case-niad-8.jpg",
+    "img/cases/case-niad-9.jpg",
+    "img/cases/case-niad-10.jpg",
+    "img/cases/case-niad-11.jpg",
+    "img/cases/case-niad-12.jpg"
+  ],
+  "stand-itaipu-web-summit": [
+    "img/cases/case-stand-itaipu-web-summit-1.jpg",
+    "img/cases/case-stand-itaipu-web-summit-2.jpg",
+    "img/cases/case-stand-itaipu-web-summit-3.jpg",
+    "img/cases/case-stand-itaipu-web-summit-4.jpg",
+    "img/cases/case-stand-itaipu-web-summit-5.jpg",
+    "img/cases/case-stand-itaipu-web-summit-6.jpg",
+    "img/cases/case-stand-itaipu-web-summit-7.jpg",
+    "img/cases/case-stand-itaipu-web-summit-8.jpg",
+    "img/cases/case-stand-itaipu-web-summit-9.jpg",
+    "img/cases/case-stand-itaipu-web-summit-10.jpg",
+    "img/cases/case-stand-itaipu-web-summit-11.jpg",
+    "img/cases/case-stand-itaipu-web-summit-12.jpg",
+    "img/cases/case-stand-itaipu-web-summit-13.jpg",
+    "img/cases/case-stand-itaipu-web-summit-14.jpg",
+    "img/cases/case-stand-itaipu-web-summit-15.jpg",
+    "img/cases/case-stand-itaipu-web-summit-16.jpg",
+    "img/cases/case-stand-itaipu-web-summit-17.jpg",
+    "img/cases/case-stand-itaipu-web-summit-18.jpg",
+    "img/cases/case-stand-itaipu-web-summit-19.jpg",
+    "img/cases/case-stand-itaipu-web-summit-20.jpg"
+  ],
+  "roda-rico-patos": [
+    "img/cases/case-roda-rico-patos-1.jpg",
+    "img/cases/case-roda-rico-patos-2.jpg",
+    "img/cases/case-roda-rico-patos-3.jpg",
+    "img/cases/case-roda-rico-patos-4.jpg",
+    "img/cases/case-roda-rico-patos-5.jpg",
+    "img/cases/case-roda-rico-patos-6.jpg",
+    "img/cases/case-roda-rico-patos-7.jpg",
+    "img/cases/case-roda-rico-patos-8.jpg",
+    "img/cases/case-roda-rico-patos-9.jpg",
+    "img/cases/case-roda-rico-patos-10.jpg",
+    "img/cases/case-roda-rico-patos-11.jpg",
+    "img/cases/case-roda-rico-patos-12.jpg",
+    "img/cases/case-roda-rico-patos-13.jpg",
+    "img/cases/case-roda-rico-patos-14.jpg",
+    "img/cases/case-roda-rico-patos-15.jpg",
+    "img/cases/case-roda-rico-patos-16.jpg",
+    "img/cases/case-roda-rico-patos-17.jpg",
+    "img/cases/case-roda-rico-patos-18.jpg",
+    "img/cases/case-roda-rico-patos-19.jpg",
+    "img/cases/case-roda-rico-patos-20.jpg",
+    "img/cases/case-roda-rico-patos-21.jpg",
+    "img/cases/case-roda-rico-patos-22.jpg"
+  ],
+  "harry-potter-25-anos-de-magia": [
+    "img/cases/case-harry-potter-25-anos-de-magia-1.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-2.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-3.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-4.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-5.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-6.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-7.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-8.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-9.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-10.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-11.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-12.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-13.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-14.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-15.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-16.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-17.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-18.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-19.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-20.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-21.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-22.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-23.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-24.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-25.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-26.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-27.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-28.jpg",
+    "img/cases/case-harry-potter-25-anos-de-magia-29.jpg"
+  ],
+  "d23-transamerica-expo-center": [
+    "img/cases/case-d23-transamerica-expo-center-1.jpg",
+    "img/cases/case-d23-transamerica-expo-center-2.jpg",
+    "img/cases/case-d23-transamerica-expo-center-3.jpg",
+    "img/cases/case-d23-transamerica-expo-center-4.jpg",
+    "img/cases/case-d23-transamerica-expo-center-5.jpg",
+    "img/cases/case-d23-transamerica-expo-center-6.jpg",
+    "img/cases/case-d23-transamerica-expo-center-7.jpg",
+    "img/cases/case-d23-transamerica-expo-center-8.jpg",
+    "img/cases/case-d23-transamerica-expo-center-9.jpg"
+  ],
+  "cix": [
+    "img/cases/case-cix-1.jpg",
+    "img/cases/case-cix-2.jpg",
+    "img/cases/case-cix-3.jpg",
+    "img/cases/case-cix-4.jpg",
+    "img/cases/case-cix-5.jpg",
+    "img/cases/case-cix-6.jpg",
+    "img/cases/case-cix-7.jpg",
+    "img/cases/case-cix-8.jpg",
+    "img/cases/case-cix-9.jpg",
+    "img/cases/case-cix-10.jpg",
+    "img/cases/case-cix-11.jpg",
+    "img/cases/case-cix-12.jpg",
+    "img/cases/case-cix-13.jpg",
+    "img/cases/case-cix-14.jpg",
+    "img/cases/case-cix-15.jpg",
+    "img/cases/case-cix-16.jpg",
+    "img/cases/case-cix-17.jpg",
+    "img/cases/case-cix-18.jpg"
+  ],
+  "abal": [
+    "img/cases/case-abal-1.jpg",
+    "img/cases/case-abal-2.jpg",
+    "img/cases/case-abal-3.jpg",
+    "img/cases/case-abal-4.jpg",
+    "img/cases/case-abal-5.jpg",
+    "img/cases/case-abal-6.jpg",
+    "img/cases/case-abal-7.jpg",
+    "img/cases/case-abal-8.jpg",
+    "img/cases/case-abal-9.jpg",
+    "img/cases/case-abal-10.jpg",
+    "img/cases/case-abal-11.jpg",
+    "img/cases/case-abal-12.jpg",
+    "img/cases/case-abal-13.jpg",
+    "img/cases/case-abal-14.jpg",
+    "img/cases/case-abal-15.jpg",
+    "img/cases/case-abal-16.jpg",
+    "img/cases/case-abal-17.jpg",
+    "img/cases/case-abal-18.jpg",
+    "img/cases/case-abal-19.jpg",
+    "img/cases/case-abal-20.jpg",
+    "img/cases/case-abal-21.jpg",
+    "img/cases/case-abal-22.jpg",
+    "img/cases/case-abal-23.jpg",
+    "img/cases/case-abal-24.jpg",
+    "img/cases/case-abal-25.jpg"
+  ],
+  "employee-latam-disney": [
+    "img/cases/case-employee-latam-disney-1.jpg",
+    "img/cases/case-employee-latam-disney-2.jpg",
+    "img/cases/case-employee-latam-disney-3.jpg",
+    "img/cases/case-employee-latam-disney-4.jpg",
+    "img/cases/case-employee-latam-disney-5.jpg",
+    "img/cases/case-employee-latam-disney-6.jpg",
+    "img/cases/case-employee-latam-disney-7.jpg",
+    "img/cases/case-employee-latam-disney-8.jpg",
+    "img/cases/case-employee-latam-disney-9.jpg",
+    "img/cases/case-employee-latam-disney-10.jpg",
+    "img/cases/case-employee-latam-disney-11.jpg",
+    "img/cases/case-employee-latam-disney-12.jpg",
+    "img/cases/case-employee-latam-disney-13.jpg",
+    "img/cases/case-employee-latam-disney-14.jpg",
+    "img/cases/case-employee-latam-disney-15.jpg",
+    "img/cases/case-employee-latam-disney-16.jpg",
+    "img/cases/case-employee-latam-disney-17.jpg",
+    "img/cases/case-employee-latam-disney-18.jpg",
+    "img/cases/case-employee-latam-disney-19.jpg",
+    "img/cases/case-employee-latam-disney-20.jpg",
+    "img/cases/case-employee-latam-disney-21.jpg",
+    "img/cases/case-employee-latam-disney-22.jpg",
+    "img/cases/case-employee-latam-disney-23.jpg",
+    "img/cases/case-employee-latam-disney-24.jpg",
+    "img/cases/case-employee-latam-disney-25.jpg"
+  ],
+  "kings-league-netshoes": [
+    "img/cases/case-kings-league-netshoes-1.jpg"
+  ],
+  "batman-day": [
+    {
+      "src": "img/cases/case-batman-day-1.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-2.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-3.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-4.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-5.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-6.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-7.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-8.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-9.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-10.jpg",
+      "label": "Parque Vila Lobos"
+    },
+    {
+      "src": "img/cases/case-batman-day-11.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-12.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-13.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-14.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-15.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-16.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-17.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-18.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-19.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-20.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-21.jpg",
+      "label": "Praça dos Arcos"
+    },
+    {
+      "src": "img/cases/case-batman-day-22.jpg",
+      "label": "Praça dos Arcos"
+    }
+  ],
+  "bauducco": [
+    "img/cases/case-bauducco-1.jpg",
+    "img/cases/case-bauducco-2.jpg",
+    "img/cases/case-bauducco-3.jpg",
+    "img/cases/case-bauducco-4.jpg",
+    "img/cases/case-bauducco-5.jpg",
+    "img/cases/case-bauducco-6.jpg",
+    "img/cases/case-bauducco-7.jpg",
+    "img/cases/case-bauducco-8.jpg",
+    "img/cases/case-bauducco-9.jpg",
+    "img/cases/case-bauducco-10.jpg",
+    "img/cases/case-bauducco-11.jpg",
+    "img/cases/case-bauducco-12.jpg",
+    "img/cases/case-bauducco-13.jpg"
+  ],
+  "cop30": [
+    "img/cases/case-cop30-1.jpg",
+    "img/cases/case-cop30-2.jpg",
+    "img/cases/case-cop30-3.jpg",
+    "img/cases/case-cop30-4.jpg",
+    "img/cases/case-cop30-5.jpg",
+    "img/cases/case-cop30-6.jpg",
+    "img/cases/case-cop30-7.jpg"
+  ],
+  "ccxp-warner-noiva": [
+    "img/noiva.jpg",
+    "img/cases/case-ccxp-warner-noiva-1.jpg",
+    "img/cases/case-ccxp-warner-noiva-2.jpg",
+    "img/cases/case-ccxp-warner-noiva-3.jpg",
+    "img/cases/case-ccxp-warner-noiva-4.jpg",
+    "img/cases/case-ccxp-warner-noiva-5.jpg",
+    "img/cases/case-ccxp-warner-noiva-6.jpg",
+    "img/cases/case-ccxp-warner-noiva-7.jpg",
+    "img/cases/case-ccxp-warner-noiva-8.jpg",
+    "img/cases/case-ccxp-warner-noiva-9.jpg",
+    "img/cases/case-ccxp-warner-noiva-10.jpg",
+    "img/cases/case-ccxp-warner-noiva-11.jpg",
+    "img/cases/case-ccxp-warner-noiva-12.jpg",
+    "img/cases/case-ccxp-warner-noiva-13.jpg",
+    "img/cases/case-ccxp-warner-noiva-14.jpg",
+    "img/cases/case-ccxp-warner-noiva-15.jpg",
+    "img/cases/case-ccxp-warner-noiva-16.jpg",
+    "img/cases/case-ccxp-warner-noiva-17.jpg",
+    "img/cases/case-ccxp-warner-noiva-18.jpg",
+    "img/cases/case-ccxp-warner-noiva-19.jpg",
+    "img/cases/case-ccxp-warner-noiva-20.jpg",
+    "img/cases/case-ccxp-warner-noiva-21.jpg",
+    "img/cases/case-ccxp-warner-noiva-22.jpg",
+    "img/cases/case-ccxp-warner-noiva-23.jpg",
+    "img/cases/case-ccxp-warner-noiva-24.jpg",
+    "img/cases/case-ccxp-warner-noiva-25.jpg",
+    "img/cases/case-ccxp-warner-noiva-26.jpg",
+    "img/cases/case-ccxp-warner-noiva-27.jpg",
+    "img/cases/case-ccxp-warner-noiva-28.jpg",
+    "img/cases/case-ccxp-warner-noiva-29.jpg",
+    "img/cases/case-ccxp-warner-noiva-30.jpg",
+    "img/cases/case-ccxp-warner-noiva-31.jpg",
+    "img/cases/case-ccxp-warner-noiva-32.jpg",
+    "img/cases/case-ccxp-warner-noiva-33.jpg",
+    "img/cases/case-ccxp-warner-noiva-34.jpg",
+    "img/cases/case-ccxp-warner-noiva-35.jpg"
+  ],
+  "ccxp-warner-supergirl": [
+    "img/cases/case-ccxp-warner-supergirl-new-1.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-2.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-3.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-4.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-5.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-6.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-7.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-8.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-9.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-10.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-11.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-12.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-13.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-14.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-15.jpg",
+    "img/cases/case-ccxp-warner-supergirl-new-16.jpg"
+  ],
+  "ccxp-warner-mortal-kombat": [
+    "img/cases/case-ccxp-warner-mortal-kombat-new-1.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-2.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-3.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-4.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-5.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-6.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-7.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-8.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-9.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-10.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-11.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-12.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-13.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-14.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-15.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-16.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-17.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-18.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-19.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-20.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-21.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-22.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-23.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-24.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-25.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-26.jpg",
+    "img/cases/case-ccxp-warner-mortal-kombat-new-27.jpg"
+  ]
+}
 ;
   var lb=document.getElementById('lb'), im=document.getElementById('lb-img'), back=null;
   var lbPrev=document.getElementById('lb-prev'), lbNext=document.getElementById('lb-next');
