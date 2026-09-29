@@ -56,19 +56,11 @@
   #grain{position:fixed;inset:0;z-index:890;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
     background-repeat:repeat;background-size:180px 180px}
 
-  /* confidencial */
-  #wm{position:fixed;inset:-25%;z-index:900;pointer-events:none;opacity:.014;
-    transform:rotate(-30deg);display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    gap:74px 44px;align-content:center;font-family:var(--display);font-weight:700;font-size:13px;
-    letter-spacing:.3em;text-transform:uppercase;color:#fff;white-space:nowrap}
   #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,18px);z-index:1200;
     background:var(--amarelo);color:#000;font-family:var(--display);font-weight:700;font-size:11px;
     letter-spacing:.12em;text-transform:uppercase;padding:12px 20px;border-radius:999px;
     opacity:0;transition:.3s;pointer-events:none}
   #toast.on{opacity:1;transform:translate(-50%,0)}
-  @media print{body>*{display:none!important}
-    body::after{content:"Documento confidencial. Impressão desabilitada.";display:block;
-      padding:40px;font-family:Arial,sans-serif;color:#000}}
 
   /* nav */
   header.nav{position:sticky;top:0;z-index:80;background:rgba(0,0,0,.84);
@@ -208,6 +200,7 @@
   .orb-ring{position:absolute;inset:-10px;border-radius:50%;border:1px solid var(--amarelo);
     opacity:0;transform:scale(.96);transition:opacity .45s ease,transform .55s ease;pointer-events:none}
   .orb:hover .orb-ring,.orb:focus-visible .orb-ring{opacity:.8;transform:scale(1)}
+  .orb-shade,.orb-name,.orb-count{display:none}
   @media (hover:none){.disc img{filter:grayscale(0)}}
   @media(max-width:940px){.orb.extra{display:none}
     body.all-on .orb.extra:not(.off){display:block}}
@@ -245,27 +238,48 @@
   .case-grid h3{color:var(--amarelo);font-size:clamp(15px,1.5vw,19px)}
   .case-grid p{font-size:clamp(16px,1.35vw,18px);line-height:1.62;color:var(--nevoa-claro);max-width:62ch}
   @media(max-width:820px){.case-grid{grid-template-columns:1fr;gap:10px}}
+  .shot{display:block;padding:0;border:0;background:none;cursor:zoom-in;width:100%}
   .case-shots{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.2vw,18px);
     margin-top:clamp(30px,4vw,50px)}
-  .case-shots img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.05);
+  .case-shots .shot img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.05);
     transition:filter .6s ease}
-  .case-shots img:hover{filter:grayscale(0)}
-  .case-shots img:first-child{grid-column:span 2;aspect-ratio:16/7}
+  .case-shots .shot:hover img,.case-shots .shot:focus-visible img{filter:grayscale(0)}
+  .case-shots .shot:first-child{grid-column:span 2}
+  .case-shots .shot:first-child img{aspect-ratio:16/9}
   @media(max-width:620px){.case-shots{grid-template-columns:1fr}
-    .case-shots img:first-child{grid-column:span 1;aspect-ratio:4/3}}
+    .case-shots .shot:first-child{grid-column:span 1}
+    .case-shots .shot:first-child img{aspect-ratio:4/3}}
   .case-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(34px,4.5vw,56px);
     padding-top:clamp(28px,3.4vw,44px);border-top:1px solid var(--line)}
 
   /* lightbox */
   #lb{position:fixed;inset:0;z-index:1000;background:#040404;display:none;
-    flex-direction:column;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px)}
+    flex-direction:column;align-items:stretch;justify-content:flex-start}
   #lb.on{display:flex}
-  #lb img{max-width:100%;max-height:76vh;object-fit:contain}
-  .lb-cap{display:flex;flex-direction:column;gap:6px;align-items:center;margin-top:22px;text-align:center}
-  .lb-close{position:absolute;top:clamp(14px,3vw,28px);right:clamp(14px,3vw,28px);
+  .lb-stage{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(10px,3vw,32px);touch-action:none}
+  .lb-zoomwrap{position:relative;max-width:100%;max-height:100%;
+    display:flex;align-items:center;justify-content:center;
+    transform:scale(1) translate(0,0);will-change:transform}
+  .lb-zoomwrap.zooming{cursor:grab}
+  .lb-zoomwrap.dragging{cursor:grabbing}
+  #lb-img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;user-select:none;-webkit-user-select:none;pointer-events:none}
+  .lb-cap{flex:0 0 auto;text-align:center;padding:0 16px clamp(10px,2.4vw,18px);
+    font-family:var(--display);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--nevoa)}
+  .lb-close{position:absolute;top:clamp(14px,3vw,28px);right:clamp(14px,3vw,28px);z-index:3;
     width:44px;height:44px;border:1px solid var(--line-2);border-radius:999px;
-    display:grid;place-items:center;color:var(--nevoa);font-size:19px;transition:.2s}
+    display:grid;place-items:center;color:var(--nevoa);font-size:19px;transition:.2s;
+    background:rgba(4,4,4,.4)}
   .lb-close:hover{color:var(--amarelo);border-color:var(--amarelo)}
+  .lb-zoom{position:absolute;top:clamp(14px,3vw,28px);right:clamp(66px,10vw,86px);z-index:3;
+    width:44px;height:44px;border:1px solid var(--line-2);border-radius:999px;
+    display:grid;place-items:center;color:var(--nevoa);transition:.2s;background:rgba(4,4,4,.4)}
+  .lb-zoom:hover{color:var(--amarelo);border-color:var(--amarelo)}
+  .lb-zoom[aria-pressed="true"]{color:#000;background:var(--amarelo);border-color:var(--amarelo)}
+  .lb-zoom[aria-pressed="true"] .lb-zoom-plus-v{display:none}
   .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
     width:48px;height:48px;border:1px solid var(--line-2);border-radius:999px;
     display:grid;place-items:center;color:var(--nevoa);font-size:20px;transition:.2s;background:rgba(0,0,0,.35)}
@@ -273,8 +287,20 @@
   .lb-nav.off{display:none}
   #lb-prev{left:clamp(10px,3vw,28px)}
   #lb-next{right:clamp(10px,3vw,28px)}
-  .lb-count{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--nevoa)}
-  .lb-title{font-family:var(--display);font-weight:600;font-size:clamp(15px,1.8vw,19px);color:#F4F1EA}
+  @media(max-width:720px){.lb-nav{width:38px;height:38px;font-size:16px}
+    .lb-zoom{right:60px;width:38px;height:38px}
+    .lb-close{width:38px;height:38px}}
+  .lb-thumbs{flex:0 0 auto;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    padding:0 clamp(14px,4vw,32px) clamp(12px,3vw,20px);scrollbar-width:thin}
+  .lb-thumbs.off{display:none}
+  .lb-thumb{flex:0 0 auto;width:58px;height:58px;border-radius:8px;overflow:hidden;
+    padding:0;border:2px solid transparent;opacity:.5;transition:opacity .2s,border-color .2s;
+    cursor:pointer;background:var(--surface)}
+  .lb-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.4)}
+  .lb-thumb:hover{opacity:.85}
+  .lb-thumb.on{opacity:1;border-color:var(--amarelo)}
+  .lb-thumb.on img{filter:none}
+  @media(max-width:720px){.lb-thumb{width:44px;height:44px}}
 
   /* frentes */
   .frentes{border-top:1px solid var(--line)}
@@ -365,7 +391,6 @@
 </style>
 
 <div id="grain" aria-hidden="true"></div>
-<div id="wm" aria-hidden="true"></div>
 <div id="toast" role="status">Conteúdo protegido</div>
 
 <header class="nav">
@@ -484,57 +509,55 @@
   </div>
   <div class="orbit" id="grid">
     <button class="orb" type="button" data-cat="feiras" data-img="img/ccxp.jpg" data-gallery="ccxp-2025-hbomax" aria-label="Ampliar foto de projeto: CCXP 2025 — HBO Max" data-title="CCXP 2025 — HBO Max" title="CCXP 2025 — HBO Max">
-      <span class="disc"><img src="img/ccxp.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/ccxp.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb" type="button" data-cat="ativacoes" data-img="img/derry.jpg" data-gallery="ccxp-2025-hbomax" aria-label="Ampliar foto de projeto: CCXP 2025 — HBO Max" data-title="CCXP 2025 — HBO Max" title="CCXP 2025 — HBO Max">
-      <span class="disc"><img src="img/derry.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
-    <button class="orb" type="button" data-cat="ativacoes" data-img="img/batman.jpg" data-gallery="ccxp-warner-2025" aria-label="Ampliar foto de projeto: CCXP Warner Bros 2025" data-title="CCXP Warner Bros 2025" title="CCXP Warner Bros 2025">
-      <span class="disc"><img src="img/batman.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/derry.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
+    <button class="orb" type="button" data-cat="ativacoes" data-img="img/batman.jpg" data-gallery="batman-day" aria-label="Ampliar foto de projeto: Batman Day" data-title="Batman Day" title="Batman Day">
+      <span class="disc"><img src="img/batman.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb" type="button" data-cat="cultura" data-img="img/mouse.jpg" data-gallery="house-of-mouse" aria-label="Ampliar foto de projeto: House of Mouse" data-title="House of Mouse" title="House of Mouse">
-      <span class="disc"><img src="img/mouse.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/mouse.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb" type="button" data-cat="ativacoes" data-img="img/panda.jpg" data-gallery="roda-rico-kung-fu-panda" aria-label="Ampliar foto de projeto: Roda Rico — Kung Fu Panda" data-title="Roda Rico — Kung Fu Panda" title="Roda Rico — Kung Fu Panda">
-      <span class="disc"><img src="img/panda.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/panda.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb" type="button" data-cat="feiras" data-img="img/d23.jpg" data-gallery="d23-transamerica-expo-center" aria-label="Ampliar foto de projeto: D23 — Transamerica Expo Center" data-title="D23 — Transamerica Expo Center" title="D23 — Transamerica Expo Center">
-      <span class="disc"><img src="img/d23.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/d23.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb" type="button" data-cat="feiras" data-img="img/noiva.jpg" data-gallery="ccxp-warner-2025" aria-label="Ampliar foto de projeto: CCXP Warner Bros 2025" data-title="CCXP Warner Bros 2025" title="CCXP Warner Bros 2025">
-      <span class="disc"><img src="img/noiva.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
-    <button class="orb" type="button" data-cat="feiras" data-img="img/mortal.jpg" data-gallery="ccxp-warner-2025" aria-label="Ampliar foto de projeto: CCXP Warner Bros 2025" data-title="CCXP Warner Bros 2025" title="CCXP Warner Bros 2025">
-      <span class="disc"><img src="img/mortal.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/noiva.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="premiacoes" data-img="img/bola.jpg" data-gallery="bola-de-prata-2025" aria-label="Ampliar foto de projeto: Bola de Prata 2025" data-title="Bola de Prata 2025" title="Bola de Prata 2025">
-      <span class="disc"><img src="img/bola.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/bola.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="premiacoes" data-img="img/bola24.jpg" data-gallery="bola-de-prata-2024" aria-label="Ampliar foto de projeto: Bola de Prata 2024" data-title="Bola de Prata 2024" title="Bola de Prata 2024">
-      <span class="disc"><img src="img/bola24.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/bola24.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="cultura" data-img="img/united.jpg" data-gallery="confra-disney-e-espn-2025" aria-label="Ampliar foto de projeto: Confra Disney & ESPN 2025" data-title="Confra Disney & ESPN 2025" title="Confra Disney & ESPN 2025">
-      <span class="disc"><img src="img/united.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/united.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="ativacoes" data-img="img/hp.jpg" data-gallery="harry-potter-25-anos-de-magia" aria-label="Ampliar foto de projeto: Harry Potter — 25 Anos de Magia" data-title="Harry Potter — 25 Anos de Magia" title="Harry Potter — 25 Anos de Magia">
-      <span class="disc"><img src="img/hp.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/hp.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="ativacoes" data-img="img/toy.jpg" data-gallery="toy-story-30-anos-trucktour" aria-label="Ampliar foto de projeto: Toy Story 30 Anos — TruckTour" data-title="Toy Story 30 Anos — TruckTour" title="Toy Story 30 Anos — TruckTour">
-      <span class="disc"><img src="img/toy.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
-    <button class="orb extra" type="button" data-cat="varejo" data-img="img/bauducco.jpg" aria-label="Ampliar foto de projeto: Bauducco" data-title="Bauducco" title="Bauducco">
-      <span class="disc"><img src="img/bauducco.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/toy.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
+    <button class="orb extra" type="button" data-cat="varejo" data-img="img/bauducco.jpg" data-gallery="bauducco" aria-label="Ampliar foto de projeto: Bauducco" data-title="Bauducco" title="Bauducco">
+      <span class="disc"><img src="img/bauducco.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="varejo" data-img="img/netshoes.jpg" data-gallery="netshoes-run-df" aria-label="Ampliar foto de projeto: Netshoes Run — DF" data-title="Netshoes Run — DF" title="Netshoes Run — DF">
-      <span class="disc"><img src="img/netshoes.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/netshoes.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="cultura" data-img="img/sunset.jpg" data-gallery="disney-sunset" aria-label="Ampliar foto de projeto: Disney Sunset" data-title="Disney Sunset" title="Disney Sunset">
-      <span class="disc"><img src="img/sunset.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/sunset.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="cultura" data-img="img/employee.jpg" data-gallery="employee-latam-disney" aria-label="Ampliar foto de projeto: Employee Latam — Disney" data-title="Employee Latam — Disney" title="Employee Latam — Disney">
-      <span class="disc"><img src="img/employee.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/employee.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="corporativo" data-img="img/cix.jpg" data-gallery="cix" aria-label="Ampliar foto de projeto: CIX" data-title="CIX" title="CIX">
-      <span class="disc"><img src="img/cix.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/cix.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="corporativo" data-img="img/byd.jpg" data-gallery="byd" aria-label="Ampliar foto de projeto: BYD" data-title="BYD" title="BYD">
-      <span class="disc"><img src="img/byd.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/byd.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="feiras" data-img="img/itaipu.jpg" data-gallery="stand-itaipu-web-summit" aria-label="Ampliar foto de projeto: Stand Itaipu — Web Summit" data-title="Stand Itaipu — Web Summit" title="Stand Itaipu — Web Summit">
-      <span class="disc"><img src="img/itaipu.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
-    <button class="orb extra" type="button" data-cat="corporativo" data-img="img/cop30.jpg" aria-label="Ampliar foto de projeto: COP30" data-title="COP30" title="COP30">
-      <span class="disc"><img src="img/cop30.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/itaipu.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
+    <button class="orb extra" type="button" data-cat="corporativo" data-img="img/cop30.jpg" data-gallery="cop30" aria-label="Ampliar foto de projeto: COP30" data-title="COP30" title="COP30">
+      <span class="disc"><img src="img/cop30.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="corporativo" data-img="img/abal.jpg" data-gallery="abal" aria-label="Ampliar foto de projeto: ABAL" data-title="ABAL" title="ABAL">
-      <span class="disc"><img src="img/abal.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/abal.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="cultura" data-img="img/cases/case-niad-1.jpg" data-gallery="niad" aria-label="Ampliar foto de projeto: NIAD" data-title="NIAD" title="NIAD">
-      <span class="disc"><img src="img/cases/case-niad-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/cases/case-niad-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="ativacoes" data-img="img/cases/case-roda-rico-patos-1.jpg" data-gallery="roda-rico-patos" aria-label="Ampliar foto de projeto: Roda Rico — Patos" data-title="Roda Rico — Patos" title="Roda Rico — Patos">
-      <span class="disc"><img src="img/cases/case-roda-rico-patos-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/cases/case-roda-rico-patos-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="cultura" data-img="img/cases/case-dia-da-familia-2024-1.jpg" data-gallery="dia-da-familia-2024" aria-label="Ampliar foto de projeto: Dia da Família 2024" data-title="Dia da Família 2024" title="Dia da Família 2024">
-      <span class="disc"><img src="img/cases/case-dia-da-familia-2024-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/cases/case-dia-da-familia-2024-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
     <button class="orb extra" type="button" data-cat="varejo" data-img="img/cases/case-kings-league-netshoes-1.jpg" data-gallery="kings-league-netshoes" aria-label="Ampliar foto de projeto: Kings League — Netshoes" data-title="Kings League — Netshoes" title="Kings League — Netshoes">
-      <span class="disc"><img src="img/cases/case-kings-league-netshoes-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span></span></button>
+      <span class="disc"><img src="img/cases/case-kings-league-netshoes-1.jpg" alt="Projeto da Kordon" loading="lazy" draggable="false"><span class="orb-ring"></span><span class="orb-shade"></span><span class="orb-count"></span><span class="orb-name"></span></span></button>
   </div>
   <div style="text-align:center"><button class="btn ghost maisbtn" id="mais" type="button">Ver todos os projetos</button></div>
   <div class="tease">
@@ -715,7 +738,6 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Kordon Agency · Share of Experience</span>
-      <span>Confidencial · layout de proposta</span>
     </div>
   </div>
 </footer>
@@ -750,9 +772,9 @@
       <p>A ativação levou o Megafone de Ouro no Prêmio LIVE 2026, na categoria melhor ativação do ano. O teaser está publicado no canal da Kordon.</p>
     </div>
     <div class="case-shots">
-      <img src="img/case-derry-1.jpg" alt="Cenografia de IT: Bem-vindos a Derry" draggable="false">
-      <img src="img/case-derry-2.jpg" alt="Fachada construída para a ativação" draggable="false">
-      <img src="img/case-derry-3.jpg" alt="Estande na CCXP" draggable="false">
+      <button type="button" class="shot" data-shot-idx="0" aria-label="Ampliar foto: Cenografia de IT: Bem-vindos a Derry"><img src="img/case-derry-1.jpg" alt="Cenografia de IT: Bem-vindos a Derry" draggable="false"></button>
+      <button type="button" class="shot" data-shot-idx="1" aria-label="Ampliar foto: Fachada construída para a ativação"><img src="img/case-derry-2.jpg" alt="Fachada construída para a ativação" draggable="false"></button>
+      <button type="button" class="shot" data-shot-idx="2" aria-label="Ampliar foto: Estande na CCXP"><img src="img/case-derry-3.jpg" alt="Estande na CCXP" draggable="false"></button>
     </div>
     <div class="case-cta">
       <a class="btn" href="https://www.youtube.com/shorts/BJsUh6hYLSk" target="_blank" rel="noopener">Assistir ao teaser</a>
@@ -763,20 +785,22 @@
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Foto do projeto">
   <button class="lb-close" id="lb-close" aria-label="Fechar">✕</button>
+  <button class="lb-zoom" id="lb-zoom" type="button" aria-label="Aproximar imagem" aria-pressed="false">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.2" y2="16.2"></line><line class="lb-zoom-plus-v" x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+  </button>
   <button class="lb-nav" id="lb-prev" aria-label="Foto anterior">‹</button>
   <button class="lb-nav" id="lb-next" aria-label="Próxima foto">›</button>
-  <img id="lb-img" alt="" draggable="false">
-  <div class="lb-cap"><span class="lb-title" id="lb-title"></span><span class="lb-count" id="lb-count"></span></div>
+  <div class="lb-stage" id="lb-stage">
+    <div class="lb-zoomwrap" id="lb-zoomwrap">
+      <img id="lb-img" alt="" draggable="false">
+    </div>
+  </div>
+  <div class="lb-cap" id="lb-cap"></div>
+  <div class="lb-thumbs" id="lb-thumbs"></div>
 </div>
 
 <script>
 (function(){
-  // marca d'água
-  var wm=document.getElementById('wm'),
-      txt='Kordon · Confidencial · '+new Date().toLocaleDateString('pt-BR'), s='';
-  for(var i=0;i<140;i++) s+='<span>'+txt+'</span>';
-  wm.innerHTML=s;
-
   // textura de grão
   (function(){
     var c=document.createElement('canvas'); c.width=c.height=180;
@@ -847,36 +871,111 @@
   });
 
   // lightbox com galeria de fotos por projeto
-  var GALLERIES = {"byd":["img/cases/case-byd-1.jpg","img/cases/case-byd-2.jpg","img/cases/case-byd-3.jpg","img/cases/case-byd-4.jpg","img/cases/case-byd-5.jpg"],"toy-story-30-anos-trucktour":["img/cases/case-toy-story-30-anos-trucktour-1.jpg","img/cases/case-toy-story-30-anos-trucktour-2.jpg","img/cases/case-toy-story-30-anos-trucktour-3.jpg","img/cases/case-toy-story-30-anos-trucktour-4.jpg","img/cases/case-toy-story-30-anos-trucktour-5.jpg","img/cases/case-toy-story-30-anos-trucktour-6.jpg"],"ccxp-2025-hbomax":["img/cases/case-ccxp-2025-hbomax-1.jpg","img/cases/case-ccxp-2025-hbomax-2.jpg","img/cases/case-ccxp-2025-hbomax-3.jpg","img/cases/case-ccxp-2025-hbomax-4.jpg","img/cases/case-ccxp-2025-hbomax-5.jpg","img/cases/case-ccxp-2025-hbomax-6.jpg"],"roda-rico-kung-fu-panda":["img/cases/case-roda-rico-kung-fu-panda-1.jpg","img/cases/case-roda-rico-kung-fu-panda-2.jpg","img/cases/case-roda-rico-kung-fu-panda-3.jpg","img/cases/case-roda-rico-kung-fu-panda-4.jpg","img/cases/case-roda-rico-kung-fu-panda-5.jpg"],"confra-disney-e-espn-2025":["img/cases/case-confra-disney-e-espn-2025-1.jpg","img/cases/case-confra-disney-e-espn-2025-2.jpg","img/cases/case-confra-disney-e-espn-2025-3.jpg","img/cases/case-confra-disney-e-espn-2025-4.jpg","img/cases/case-confra-disney-e-espn-2025-5.jpg"],"netshoes-run-df":["img/cases/case-netshoes-run-df-1.jpg","img/cases/case-netshoes-run-df-2.jpg","img/cases/case-netshoes-run-df-3.jpg","img/cases/case-netshoes-run-df-4.jpg","img/cases/case-netshoes-run-df-5.jpg","img/cases/case-netshoes-run-df-6.jpg"],"bola-de-prata-2024":["img/cases/case-bola-de-prata-2024-1.jpg","img/cases/case-bola-de-prata-2024-2.jpg","img/cases/case-bola-de-prata-2024-3.jpg","img/cases/case-bola-de-prata-2024-4.jpg","img/cases/case-bola-de-prata-2024-5.jpg"],"house-of-mouse":["img/cases/case-house-of-mouse-1.jpg","img/cases/case-house-of-mouse-2.jpg","img/cases/case-house-of-mouse-3.jpg","img/cases/case-house-of-mouse-4.jpg","img/cases/case-house-of-mouse-5.jpg","img/cases/case-house-of-mouse-6.jpg"],"bola-de-prata-2025":["img/cases/case-bola-de-prata-2025-1.jpg","img/cases/case-bola-de-prata-2025-2.jpg","img/cases/case-bola-de-prata-2025-3.jpg","img/cases/case-bola-de-prata-2025-4.jpg"],"disney-sunset":["img/cases/case-disney-sunset-1.jpg","img/cases/case-disney-sunset-2.jpg","img/cases/case-disney-sunset-3.jpg","img/cases/case-disney-sunset-4.jpg","img/cases/case-disney-sunset-5.jpg"],"dia-da-familia-2024":["img/cases/case-dia-da-familia-2024-1.jpg","img/cases/case-dia-da-familia-2024-2.jpg","img/cases/case-dia-da-familia-2024-3.jpg","img/cases/case-dia-da-familia-2024-4.jpg","img/cases/case-dia-da-familia-2024-5.jpg"],"niad":["img/cases/case-niad-1.jpg","img/cases/case-niad-2.jpg","img/cases/case-niad-3.jpg","img/cases/case-niad-4.jpg","img/cases/case-niad-5.jpg"],"stand-itaipu-web-summit":["img/cases/case-stand-itaipu-web-summit-1.jpg","img/cases/case-stand-itaipu-web-summit-2.jpg","img/cases/case-stand-itaipu-web-summit-3.jpg","img/cases/case-stand-itaipu-web-summit-4.jpg","img/cases/case-stand-itaipu-web-summit-5.jpg","img/cases/case-stand-itaipu-web-summit-6.jpg"],"roda-rico-patos":["img/cases/case-roda-rico-patos-1.jpg","img/cases/case-roda-rico-patos-2.jpg","img/cases/case-roda-rico-patos-3.jpg","img/cases/case-roda-rico-patos-4.jpg","img/cases/case-roda-rico-patos-5.jpg"],"ccxp-warner-2025":["img/cases/case-ccxp-warner-2025-1.jpg","img/cases/case-ccxp-warner-2025-2.jpg","img/cases/case-ccxp-warner-2025-3.jpg","img/cases/case-ccxp-warner-2025-4.jpg","img/cases/case-ccxp-warner-2025-5.jpg","img/cases/case-ccxp-warner-2025-6.jpg","img/cases/case-ccxp-warner-2025-7.jpg","img/cases/case-ccxp-warner-2025-8.jpg"],"harry-potter-25-anos-de-magia":["img/cases/case-harry-potter-25-anos-de-magia-1.jpg","img/cases/case-harry-potter-25-anos-de-magia-2.jpg","img/cases/case-harry-potter-25-anos-de-magia-3.jpg","img/cases/case-harry-potter-25-anos-de-magia-4.jpg","img/cases/case-harry-potter-25-anos-de-magia-5.jpg","img/cases/case-harry-potter-25-anos-de-magia-6.jpg"],"d23-transamerica-expo-center":["img/cases/case-d23-transamerica-expo-center-1.jpg","img/cases/case-d23-transamerica-expo-center-2.jpg","img/cases/case-d23-transamerica-expo-center-3.jpg","img/cases/case-d23-transamerica-expo-center-4.jpg","img/cases/case-d23-transamerica-expo-center-5.jpg"],"cix":["img/cases/case-cix-1.jpg","img/cases/case-cix-2.jpg","img/cases/case-cix-3.jpg","img/cases/case-cix-4.jpg","img/cases/case-cix-5.jpg"],"abal":["img/cases/case-abal-1.jpg","img/cases/case-abal-2.jpg","img/cases/case-abal-3.jpg","img/cases/case-abal-4.jpg","img/cases/case-abal-5.jpg"],"employee-latam-disney":["img/cases/case-employee-latam-disney-1.jpg"],"kings-league-netshoes":["img/cases/case-kings-league-netshoes-1.jpg"]}
+  var GALLERIES = {"byd": ["img/cases/case-byd-1.jpg", "img/cases/case-byd-2.jpg", "img/cases/case-byd-3.jpg", "img/cases/case-byd-4.jpg", "img/cases/case-byd-5.jpg", "img/cases/case-byd-6.jpg", "img/cases/case-byd-7.jpg", "img/cases/case-byd-8.jpg", "img/cases/case-byd-9.jpg", "img/cases/case-byd-10.jpg", "img/cases/case-byd-11.jpg", "img/cases/case-byd-12.jpg", "img/cases/case-byd-13.jpg"], "toy-story-30-anos-trucktour": ["img/cases/case-toy-story-30-anos-trucktour-1.jpg", "img/cases/case-toy-story-30-anos-trucktour-2.jpg", "img/cases/case-toy-story-30-anos-trucktour-3.jpg", "img/cases/case-toy-story-30-anos-trucktour-4.jpg", "img/cases/case-toy-story-30-anos-trucktour-5.jpg", "img/cases/case-toy-story-30-anos-trucktour-6.jpg", "img/cases/case-toy-story-30-anos-trucktour-7.jpg", "img/cases/case-toy-story-30-anos-trucktour-8.jpg", "img/cases/case-toy-story-30-anos-trucktour-9.jpg", "img/cases/case-toy-story-30-anos-trucktour-10.jpg", "img/cases/case-toy-story-30-anos-trucktour-11.jpg", "img/cases/case-toy-story-30-anos-trucktour-12.jpg", "img/cases/case-toy-story-30-anos-trucktour-13.jpg", "img/cases/case-toy-story-30-anos-trucktour-14.jpg", "img/cases/case-toy-story-30-anos-trucktour-15.jpg", "img/cases/case-toy-story-30-anos-trucktour-16.jpg"], "ccxp-2025-hbomax": ["img/cases/case-ccxp-2025-hbomax-1.jpg", "img/cases/case-ccxp-2025-hbomax-2.jpg", "img/cases/case-ccxp-2025-hbomax-3.jpg", "img/cases/case-ccxp-2025-hbomax-4.jpg", "img/cases/case-ccxp-2025-hbomax-5.jpg", "img/cases/case-ccxp-2025-hbomax-6.jpg", "img/cases/case-ccxp-2025-hbomax-7.jpg", "img/cases/case-ccxp-2025-hbomax-8.jpg", "img/cases/case-ccxp-2025-hbomax-9.jpg", "img/cases/case-ccxp-2025-hbomax-10.jpg", "img/cases/case-ccxp-2025-hbomax-11.jpg", "img/cases/case-ccxp-2025-hbomax-12.jpg", "img/cases/case-ccxp-2025-hbomax-13.jpg", "img/cases/case-ccxp-2025-hbomax-14.jpg", "img/cases/case-ccxp-2025-hbomax-15.jpg", "img/cases/case-ccxp-2025-hbomax-16.jpg", "img/cases/case-ccxp-2025-hbomax-17.jpg", "img/cases/case-ccxp-2025-hbomax-18.jpg", "img/cases/case-ccxp-2025-hbomax-19.jpg", "img/cases/case-ccxp-2025-hbomax-20.jpg", "img/cases/case-ccxp-2025-hbomax-21.jpg", "img/cases/case-ccxp-2025-hbomax-22.jpg", "img/cases/case-ccxp-2025-hbomax-23.jpg", "img/cases/case-ccxp-2025-hbomax-24.jpg", "img/cases/case-ccxp-2025-hbomax-25.jpg", "img/cases/case-ccxp-2025-hbomax-26.jpg", "img/cases/case-ccxp-2025-hbomax-27.jpg", "img/cases/case-ccxp-2025-hbomax-28.jpg", "img/cases/case-ccxp-2025-hbomax-29.jpg", "img/cases/case-ccxp-2025-hbomax-30.jpg", "img/cases/case-ccxp-2025-hbomax-31.jpg", "img/cases/case-ccxp-2025-hbomax-32.jpg", "img/cases/case-ccxp-2025-hbomax-33.jpg"], "roda-rico-kung-fu-panda": ["img/cases/case-roda-rico-kung-fu-panda-1.jpg", "img/cases/case-roda-rico-kung-fu-panda-2.jpg", "img/cases/case-roda-rico-kung-fu-panda-3.jpg", "img/cases/case-roda-rico-kung-fu-panda-4.jpg", "img/cases/case-roda-rico-kung-fu-panda-5.jpg", "img/cases/case-roda-rico-kung-fu-panda-6.jpg", "img/cases/case-roda-rico-kung-fu-panda-7.jpg", "img/cases/case-roda-rico-kung-fu-panda-8.jpg", "img/cases/case-roda-rico-kung-fu-panda-9.jpg", "img/cases/case-roda-rico-kung-fu-panda-10.jpg", "img/cases/case-roda-rico-kung-fu-panda-11.jpg", "img/cases/case-roda-rico-kung-fu-panda-12.jpg", "img/cases/case-roda-rico-kung-fu-panda-13.jpg", "img/cases/case-roda-rico-kung-fu-panda-14.jpg", "img/cases/case-roda-rico-kung-fu-panda-15.jpg", "img/cases/case-roda-rico-kung-fu-panda-16.jpg", "img/cases/case-roda-rico-kung-fu-panda-17.jpg", "img/cases/case-roda-rico-kung-fu-panda-18.jpg"], "confra-disney-e-espn-2025": ["img/cases/case-confra-disney-e-espn-2025-1.jpg", "img/cases/case-confra-disney-e-espn-2025-2.jpg", "img/cases/case-confra-disney-e-espn-2025-3.jpg", "img/cases/case-confra-disney-e-espn-2025-4.jpg", "img/cases/case-confra-disney-e-espn-2025-5.jpg", "img/cases/case-confra-disney-e-espn-2025-6.jpg", "img/cases/case-confra-disney-e-espn-2025-7.jpg", "img/cases/case-confra-disney-e-espn-2025-8.jpg", "img/cases/case-confra-disney-e-espn-2025-9.jpg", "img/cases/case-confra-disney-e-espn-2025-10.jpg"], "netshoes-run-df": ["img/cases/case-netshoes-run-df-1.jpg", "img/cases/case-netshoes-run-df-2.jpg", "img/cases/case-netshoes-run-df-3.jpg", "img/cases/case-netshoes-run-df-4.jpg", "img/cases/case-netshoes-run-df-5.jpg", "img/cases/case-netshoes-run-df-6.jpg", "img/cases/case-netshoes-run-df-7.jpg", "img/cases/case-netshoes-run-df-8.jpg", "img/cases/case-netshoes-run-df-9.jpg", "img/cases/case-netshoes-run-df-10.jpg", "img/cases/case-netshoes-run-df-11.jpg", "img/cases/case-netshoes-run-df-12.jpg", "img/cases/case-netshoes-run-df-13.jpg", "img/cases/case-netshoes-run-df-14.jpg", "img/cases/case-netshoes-run-df-15.jpg", "img/cases/case-netshoes-run-df-16.jpg"], "bola-de-prata-2024": ["img/cases/case-bola-de-prata-2024-1.jpg", "img/cases/case-bola-de-prata-2024-2.jpg", "img/cases/case-bola-de-prata-2024-3.jpg", "img/cases/case-bola-de-prata-2024-4.jpg", "img/cases/case-bola-de-prata-2024-5.jpg", "img/cases/case-bola-de-prata-2024-6.jpg", "img/cases/case-bola-de-prata-2024-7.jpg", "img/cases/case-bola-de-prata-2024-8.jpg", "img/cases/case-bola-de-prata-2024-9.jpg"], "house-of-mouse": ["img/cases/case-house-of-mouse-1.jpg", "img/cases/case-house-of-mouse-2.jpg", "img/cases/case-house-of-mouse-3.jpg", "img/cases/case-house-of-mouse-4.jpg", "img/cases/case-house-of-mouse-5.jpg", "img/cases/case-house-of-mouse-6.jpg", "img/cases/case-house-of-mouse-7.jpg", "img/cases/case-house-of-mouse-8.jpg", "img/cases/case-house-of-mouse-9.jpg", "img/cases/case-house-of-mouse-10.jpg", "img/cases/case-house-of-mouse-11.jpg", "img/cases/case-house-of-mouse-12.jpg", "img/cases/case-house-of-mouse-13.jpg", "img/cases/case-house-of-mouse-14.jpg", "img/cases/case-house-of-mouse-15.jpg", "img/cases/case-house-of-mouse-16.jpg"], "bola-de-prata-2025": ["img/cases/case-bola-de-prata-2025-1.jpg", "img/cases/case-bola-de-prata-2025-2.jpg", "img/cases/case-bola-de-prata-2025-3.jpg", "img/cases/case-bola-de-prata-2025-4.jpg", "img/cases/case-bola-de-prata-2025-5.jpg", "img/cases/case-bola-de-prata-2025-6.jpg", "img/cases/case-bola-de-prata-2025-7.jpg", "img/cases/case-bola-de-prata-2025-8.jpg", "img/cases/case-bola-de-prata-2025-9.jpg", "img/cases/case-bola-de-prata-2025-10.jpg", "img/cases/case-bola-de-prata-2025-11.jpg"], "disney-sunset": ["img/cases/case-disney-sunset-1.jpg", "img/cases/case-disney-sunset-2.jpg", "img/cases/case-disney-sunset-3.jpg", "img/cases/case-disney-sunset-4.jpg", "img/cases/case-disney-sunset-5.jpg", "img/cases/case-disney-sunset-6.jpg", "img/cases/case-disney-sunset-7.jpg", "img/cases/case-disney-sunset-8.jpg", "img/cases/case-disney-sunset-9.jpg", "img/cases/case-disney-sunset-10.jpg", "img/cases/case-disney-sunset-11.jpg", "img/cases/case-disney-sunset-12.jpg", "img/cases/case-disney-sunset-13.jpg", "img/cases/case-disney-sunset-14.jpg", "img/cases/case-disney-sunset-15.jpg", "img/cases/case-disney-sunset-16.jpg"], "dia-da-familia-2024": ["img/cases/case-dia-da-familia-2024-1.jpg", "img/cases/case-dia-da-familia-2024-2.jpg", "img/cases/case-dia-da-familia-2024-3.jpg", "img/cases/case-dia-da-familia-2024-4.jpg", "img/cases/case-dia-da-familia-2024-5.jpg", "img/cases/case-dia-da-familia-2024-6.jpg", "img/cases/case-dia-da-familia-2024-7.jpg", "img/cases/case-dia-da-familia-2024-8.jpg", "img/cases/case-dia-da-familia-2024-9.jpg", "img/cases/case-dia-da-familia-2024-10.jpg", "img/cases/case-dia-da-familia-2024-11.jpg", "img/cases/case-dia-da-familia-2024-12.jpg", "img/cases/case-dia-da-familia-2024-13.jpg", "img/cases/case-dia-da-familia-2024-14.jpg", "img/cases/case-dia-da-familia-2024-15.jpg", "img/cases/case-dia-da-familia-2024-16.jpg", "img/cases/case-dia-da-familia-2024-17.jpg", "img/cases/case-dia-da-familia-2024-18.jpg", "img/cases/case-dia-da-familia-2024-19.jpg", "img/cases/case-dia-da-familia-2024-20.jpg", "img/cases/case-dia-da-familia-2024-21.jpg"], "niad": ["img/cases/case-niad-1.jpg", "img/cases/case-niad-2.jpg", "img/cases/case-niad-3.jpg", "img/cases/case-niad-4.jpg", "img/cases/case-niad-5.jpg", "img/cases/case-niad-6.jpg", "img/cases/case-niad-7.jpg", "img/cases/case-niad-8.jpg", "img/cases/case-niad-9.jpg", "img/cases/case-niad-10.jpg", "img/cases/case-niad-11.jpg", "img/cases/case-niad-12.jpg"], "stand-itaipu-web-summit": ["img/cases/case-stand-itaipu-web-summit-1.jpg", "img/cases/case-stand-itaipu-web-summit-2.jpg", "img/cases/case-stand-itaipu-web-summit-3.jpg", "img/cases/case-stand-itaipu-web-summit-4.jpg", "img/cases/case-stand-itaipu-web-summit-5.jpg", "img/cases/case-stand-itaipu-web-summit-6.jpg", "img/cases/case-stand-itaipu-web-summit-7.jpg", "img/cases/case-stand-itaipu-web-summit-8.jpg", "img/cases/case-stand-itaipu-web-summit-9.jpg", "img/cases/case-stand-itaipu-web-summit-10.jpg", "img/cases/case-stand-itaipu-web-summit-11.jpg", "img/cases/case-stand-itaipu-web-summit-12.jpg", "img/cases/case-stand-itaipu-web-summit-13.jpg", "img/cases/case-stand-itaipu-web-summit-14.jpg", "img/cases/case-stand-itaipu-web-summit-15.jpg", "img/cases/case-stand-itaipu-web-summit-16.jpg", "img/cases/case-stand-itaipu-web-summit-17.jpg", "img/cases/case-stand-itaipu-web-summit-18.jpg", "img/cases/case-stand-itaipu-web-summit-19.jpg", "img/cases/case-stand-itaipu-web-summit-20.jpg"], "roda-rico-patos": ["img/cases/case-roda-rico-patos-1.jpg", "img/cases/case-roda-rico-patos-2.jpg", "img/cases/case-roda-rico-patos-3.jpg", "img/cases/case-roda-rico-patos-4.jpg", "img/cases/case-roda-rico-patos-5.jpg", "img/cases/case-roda-rico-patos-6.jpg", "img/cases/case-roda-rico-patos-7.jpg", "img/cases/case-roda-rico-patos-8.jpg", "img/cases/case-roda-rico-patos-9.jpg", "img/cases/case-roda-rico-patos-10.jpg", "img/cases/case-roda-rico-patos-11.jpg", "img/cases/case-roda-rico-patos-12.jpg", "img/cases/case-roda-rico-patos-13.jpg", "img/cases/case-roda-rico-patos-14.jpg", "img/cases/case-roda-rico-patos-15.jpg", "img/cases/case-roda-rico-patos-16.jpg", "img/cases/case-roda-rico-patos-17.jpg", "img/cases/case-roda-rico-patos-18.jpg", "img/cases/case-roda-rico-patos-19.jpg", "img/cases/case-roda-rico-patos-20.jpg", "img/cases/case-roda-rico-patos-21.jpg", "img/cases/case-roda-rico-patos-22.jpg"], "harry-potter-25-anos-de-magia": ["img/cases/case-harry-potter-25-anos-de-magia-1.jpg", "img/cases/case-harry-potter-25-anos-de-magia-2.jpg", "img/cases/case-harry-potter-25-anos-de-magia-3.jpg", "img/cases/case-harry-potter-25-anos-de-magia-4.jpg", "img/cases/case-harry-potter-25-anos-de-magia-5.jpg", "img/cases/case-harry-potter-25-anos-de-magia-6.jpg", "img/cases/case-harry-potter-25-anos-de-magia-7.jpg", "img/cases/case-harry-potter-25-anos-de-magia-8.jpg", "img/cases/case-harry-potter-25-anos-de-magia-9.jpg", "img/cases/case-harry-potter-25-anos-de-magia-10.jpg", "img/cases/case-harry-potter-25-anos-de-magia-11.jpg", "img/cases/case-harry-potter-25-anos-de-magia-12.jpg", "img/cases/case-harry-potter-25-anos-de-magia-13.jpg", "img/cases/case-harry-potter-25-anos-de-magia-14.jpg", "img/cases/case-harry-potter-25-anos-de-magia-15.jpg", "img/cases/case-harry-potter-25-anos-de-magia-16.jpg", "img/cases/case-harry-potter-25-anos-de-magia-17.jpg", "img/cases/case-harry-potter-25-anos-de-magia-18.jpg", "img/cases/case-harry-potter-25-anos-de-magia-19.jpg", "img/cases/case-harry-potter-25-anos-de-magia-20.jpg", "img/cases/case-harry-potter-25-anos-de-magia-21.jpg", "img/cases/case-harry-potter-25-anos-de-magia-22.jpg", "img/cases/case-harry-potter-25-anos-de-magia-23.jpg", "img/cases/case-harry-potter-25-anos-de-magia-24.jpg", "img/cases/case-harry-potter-25-anos-de-magia-25.jpg", "img/cases/case-harry-potter-25-anos-de-magia-26.jpg", "img/cases/case-harry-potter-25-anos-de-magia-27.jpg", "img/cases/case-harry-potter-25-anos-de-magia-28.jpg", "img/cases/case-harry-potter-25-anos-de-magia-29.jpg"], "d23-transamerica-expo-center": ["img/cases/case-d23-transamerica-expo-center-1.jpg", "img/cases/case-d23-transamerica-expo-center-2.jpg", "img/cases/case-d23-transamerica-expo-center-3.jpg", "img/cases/case-d23-transamerica-expo-center-4.jpg", "img/cases/case-d23-transamerica-expo-center-5.jpg", "img/cases/case-d23-transamerica-expo-center-6.jpg", "img/cases/case-d23-transamerica-expo-center-7.jpg", "img/cases/case-d23-transamerica-expo-center-8.jpg", "img/cases/case-d23-transamerica-expo-center-9.jpg"], "cix": ["img/cases/case-cix-1.jpg", "img/cases/case-cix-2.jpg", "img/cases/case-cix-3.jpg", "img/cases/case-cix-4.jpg", "img/cases/case-cix-5.jpg", "img/cases/case-cix-6.jpg", "img/cases/case-cix-7.jpg", "img/cases/case-cix-8.jpg", "img/cases/case-cix-9.jpg", "img/cases/case-cix-10.jpg", "img/cases/case-cix-11.jpg", "img/cases/case-cix-12.jpg", "img/cases/case-cix-13.jpg", "img/cases/case-cix-14.jpg", "img/cases/case-cix-15.jpg", "img/cases/case-cix-16.jpg", "img/cases/case-cix-17.jpg", "img/cases/case-cix-18.jpg"], "abal": ["img/cases/case-abal-1.jpg", "img/cases/case-abal-2.jpg", "img/cases/case-abal-3.jpg", "img/cases/case-abal-4.jpg", "img/cases/case-abal-5.jpg", "img/cases/case-abal-6.jpg", "img/cases/case-abal-7.jpg", "img/cases/case-abal-8.jpg", "img/cases/case-abal-9.jpg", "img/cases/case-abal-10.jpg", "img/cases/case-abal-11.jpg", "img/cases/case-abal-12.jpg", "img/cases/case-abal-13.jpg", "img/cases/case-abal-14.jpg", "img/cases/case-abal-15.jpg", "img/cases/case-abal-16.jpg", "img/cases/case-abal-17.jpg", "img/cases/case-abal-18.jpg", "img/cases/case-abal-19.jpg", "img/cases/case-abal-20.jpg", "img/cases/case-abal-21.jpg", "img/cases/case-abal-22.jpg", "img/cases/case-abal-23.jpg", "img/cases/case-abal-24.jpg", "img/cases/case-abal-25.jpg"], "employee-latam-disney": ["img/cases/case-employee-latam-disney-1.jpg", "img/cases/case-employee-latam-disney-2.jpg", "img/cases/case-employee-latam-disney-3.jpg", "img/cases/case-employee-latam-disney-4.jpg", "img/cases/case-employee-latam-disney-5.jpg", "img/cases/case-employee-latam-disney-6.jpg", "img/cases/case-employee-latam-disney-7.jpg", "img/cases/case-employee-latam-disney-8.jpg", "img/cases/case-employee-latam-disney-9.jpg", "img/cases/case-employee-latam-disney-10.jpg", "img/cases/case-employee-latam-disney-11.jpg", "img/cases/case-employee-latam-disney-12.jpg", "img/cases/case-employee-latam-disney-13.jpg", "img/cases/case-employee-latam-disney-14.jpg", "img/cases/case-employee-latam-disney-15.jpg", "img/cases/case-employee-latam-disney-16.jpg", "img/cases/case-employee-latam-disney-17.jpg", "img/cases/case-employee-latam-disney-18.jpg", "img/cases/case-employee-latam-disney-19.jpg", "img/cases/case-employee-latam-disney-20.jpg", "img/cases/case-employee-latam-disney-21.jpg", "img/cases/case-employee-latam-disney-22.jpg", "img/cases/case-employee-latam-disney-23.jpg", "img/cases/case-employee-latam-disney-24.jpg", "img/cases/case-employee-latam-disney-25.jpg"], "kings-league-netshoes": ["img/cases/case-kings-league-netshoes-1.jpg"], "batman-day": [{"src": "img/cases/case-batman-day-1.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-2.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-3.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-4.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-5.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-6.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-7.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-8.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-9.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-10.jpg", "label": "Parque Vila Lobos"}, {"src": "img/cases/case-batman-day-11.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-12.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-13.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-14.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-15.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-16.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-17.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-18.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-19.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-20.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-21.jpg", "label": "Praça dos Arcos"}, {"src": "img/cases/case-batman-day-22.jpg", "label": "Praça dos Arcos"}], "bauducco": ["img/cases/case-bauducco-1.jpg", "img/cases/case-bauducco-2.jpg", "img/cases/case-bauducco-3.jpg", "img/cases/case-bauducco-4.jpg", "img/cases/case-bauducco-5.jpg", "img/cases/case-bauducco-6.jpg", "img/cases/case-bauducco-7.jpg", "img/cases/case-bauducco-8.jpg", "img/cases/case-bauducco-9.jpg", "img/cases/case-bauducco-10.jpg", "img/cases/case-bauducco-11.jpg", "img/cases/case-bauducco-12.jpg", "img/cases/case-bauducco-13.jpg"], "ccxp-warner-2025": [{"src": "img/noiva.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-1.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-2.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-3.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-4.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-5.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-6.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-7.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-8.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-9.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-10.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-11.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-12.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-13.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-14.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-15.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-16.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-17.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-18.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-19.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-20.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-21.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-22.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-23.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-24.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-25.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-26.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-27.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-28.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-29.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-30.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-31.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-32.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-33.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-34.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-noiva-35.jpg", "label": "Estande da Noiva!"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-1.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-2.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-3.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-4.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-5.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-6.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-7.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-8.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-9.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-10.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-11.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-12.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-13.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-14.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-15.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-supergirl-new-16.jpg", "label": "Estande da Supergirl"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-1.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-2.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-3.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-4.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-5.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-6.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-7.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-8.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-9.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-10.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-11.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-12.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-13.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-14.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-15.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-16.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-17.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-18.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-19.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-20.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-21.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-22.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-23.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-24.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-25.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-26.jpg", "label": "Estande do Mortal Kombat"}, {"src": "img/cases/case-ccxp-warner-mortal-kombat-new-27.jpg", "label": "Estande do Mortal Kombat"}], "cop30": ["img/cases/case-cop30-1.jpg", "img/cases/case-cop30-2.jpg", "img/cases/case-cop30-3.jpg", "img/cases/case-cop30-4.jpg", "img/cases/case-cop30-5.jpg", "img/cases/case-cop30-6.jpg", "img/cases/case-cop30-7.jpg"]}
 ;
   var lb=document.getElementById('lb'), im=document.getElementById('lb-img'), back=null;
-  var lbPrev=document.getElementById('lb-prev'), lbNext=document.getElementById('lb-next'), lbCount=document.getElementById('lb-count');
-  var lbTitle=document.getElementById('lb-title');
+  var lbPrev=document.getElementById('lb-prev'), lbNext=document.getElementById('lb-next');
+  var lbCap=document.getElementById('lb-cap'), lbThumbs=document.getElementById('lb-thumbs');
+  var lbStage=document.getElementById('lb-stage'), lbZoomWrap=document.getElementById('lb-zoomwrap');
+  var lbZoomBtn=document.getElementById('lb-zoom');
   var curGallery=[], curIndex=0, curTitle='';
+  var DERRY_SHOTS=["img/case-derry-1.jpg", "img/case-derry-2.jpg", "img/case-derry-3.jpg"];
+
+  // ---- zoom / pan ----
+  var scale=1, tx=0, ty=0, MAXSCALE=4, ZOOMTO=2.4;
+  function applyTransform(t){
+    lbZoomWrap.style.transform='scale('+scale+') translate('+tx+'px,'+ty+'px)';
+    lbZoomWrap.style.transition = t ? 'transform .28s cubic-bezier(.22,1,.36,1)' : 'none';
+  }
+  function clampPan(){
+    var baseW=im.offsetWidth||1, baseH=im.offsetHeight||1;
+    var stageW=lbStage.clientWidth, stageH=lbStage.clientHeight;
+    var maxX=Math.max(0,(baseW*scale-stageW)/(2*scale));
+    var maxY=Math.max(0,(baseH*scale-stageH)/(2*scale));
+    tx=Math.min(maxX,Math.max(-maxX,tx));
+    ty=Math.min(maxY,Math.max(-maxY,ty));
+  }
+  function setZoom(on, animate){
+    scale = on ? ZOOMTO : 1;
+    if(!on){ tx=0; ty=0; }
+    clampPan();
+    applyTransform(animate!==false);
+    lbZoomBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    lbZoomWrap.classList.toggle('zooming', on);
+    lbStage.classList.toggle('is-zoomed', on);
+  }
+  function toggleZoom(){ setZoom(scale===1, true); }
+  lbZoomBtn.addEventListener('click', function(e){ e.stopPropagation(); toggleZoom(); });
+  lbStage.addEventListener('dblclick', function(e){ e.stopPropagation(); toggleZoom(); });
+
+  // ---- thumbnails ----
+  function itemSrc(it){ return (it && typeof it==='object') ? it.src : it; }
+  function itemLabel(it){ return (it && typeof it==='object' && it.label) ? it.label : ''; }
+
+  function buildThumbs(){
+    lbThumbs.innerHTML='';
+    var multi=curGallery.length>1;
+    lbThumbs.classList.toggle('off', !multi);
+    if(!multi) return;
+    curGallery.forEach(function(it,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='lb-thumb'; b.setAttribute('aria-label','Foto '+(i+1));
+      var img=document.createElement('img'); img.src=itemSrc(it); img.alt=''; img.draggable=false;
+      b.appendChild(img);
+      b.addEventListener('click', function(e){ e.stopPropagation(); showImg(i); });
+      lbThumbs.appendChild(b);
+    });
+  }
+  function updateThumbActive(){
+    var kids=lbThumbs.querySelectorAll('.lb-thumb');
+    kids.forEach(function(k,i){ k.classList.toggle('on', i===curIndex); });
+    var active=kids[curIndex];
+    if(active) active.scrollIntoView({inline:'center', block:'nearest'});
+  }
+
   function showImg(i){
     if(curGallery.length===0) return;
     curIndex=(i+curGallery.length)%curGallery.length;
-    im.src=curGallery[curIndex]; im.alt=curTitle||'Projeto da Kordon';
+    var cur=curGallery[curIndex];
+    im.src=itemSrc(cur); im.alt=curTitle||'Projeto da Kordon';
+    setZoom(false, false);
     var multi=curGallery.length>1;
     lbPrev.classList.toggle('off', !multi);
     lbNext.classList.toggle('off', !multi);
-    lbCount.textContent = multi ? (curIndex+1)+' / '+curGallery.length : '';
+    var lbl=itemLabel(cur);
+    lbCap.textContent = multi ? (curTitle ? curTitle+' · ' : '')+(lbl ? lbl+' · ' : '')+(curIndex+1)+' de '+curGallery.length : curTitle;
+    updateThumbActive();
+  }
+  function openLightbox(gallery, title, startIndex, trigger){
+    back=trigger||null;
+    curGallery = (gallery && gallery.length) ? gallery : [];
+    curTitle = title || '';
+    buildThumbs();
+    showImg(startIndex||0);
+    lb.classList.add('on'); document.body.style.overflow='hidden';
+    document.getElementById('lb-close').focus();
   }
   document.querySelectorAll('.orb').forEach(function(t){
+    var nameEl=t.querySelector('.orb-name'), countEl=t.querySelector('.orb-count');
+    var slugInit=t.dataset.gallery;
+    var n=(slugInit && GALLERIES[slugInit]) ? GALLERIES[slugInit].length : 1;
+    if(nameEl) nameEl.textContent = t.dataset.title || '';
+    if(countEl) countEl.textContent = n>1 ? n+' fotos' : '';
     t.addEventListener('click',function(){
-      back=t;
       var slug=t.dataset.gallery;
-      curGallery = (slug && GALLERIES[slug] && GALLERIES[slug].length) ? GALLERIES[slug] : [t.dataset.img];
-      curTitle = t.dataset.title || '';
-      lbTitle.textContent = curTitle;
-      showImg(0);
-      lb.classList.add('on'); document.body.style.overflow='hidden';
-      document.getElementById('lb-close').focus();
+      var gallery = (slug && GALLERIES[slug] && GALLERIES[slug].length) ? GALLERIES[slug] : [t.dataset.img];
+      openLightbox(gallery, t.dataset.title||'', 0, t);
+    });
+  });
+  document.querySelectorAll('.case-shots .shot').forEach(function(t){
+    t.addEventListener('click', function(){
+      var idx=parseInt(t.dataset.shotIdx,10)||0;
+      openLightbox(DERRY_SHOTS, 'IT: Bem-vindos a Derry', idx, t);
     });
   });
   lbPrev.addEventListener('click', function(e){ e.stopPropagation(); showImg(curIndex-1); });
   lbNext.addEventListener('click', function(e){ e.stopPropagation(); showImg(curIndex+1); });
-  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; if(back) back.focus(); }
+  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; setZoom(false,false); if(back) back.focus(); }
   document.getElementById('lb-close').addEventListener('click',close);
   lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
   document.addEventListener('keydown',function(e){
@@ -885,6 +984,81 @@
     if(e.key==='ArrowRight') showImg(curIndex+1);
     if(e.key==='ArrowLeft') showImg(curIndex-1);
   });
+
+  // ---- pointer interaction: pan when zoomed, swipe to navigate, pinch to zoom ----
+  (function(){
+    var pointers={}, pinchStartDist=0, pinchStartScale=1, panLastX=0, panLastY=0;
+    var swipeStartX=0, swipeStartY=0, swipeStartT=0, moved=false, lastTapT=0, lastTapX=0, lastTapY=0;
+    function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
+    function pts(){ return Object.keys(pointers).map(function(k){ return pointers[k]; }); }
+    lbStage.addEventListener('pointerdown', function(e){
+      if(e.target.closest('.lb-nav')||e.target.closest('.lb-close')||e.target.closest('.lb-zoom')) return;
+      pointers[e.pointerId]={x:e.clientX,y:e.clientY};
+      try{ lbStage.setPointerCapture(e.pointerId); }catch(err){}
+      moved=false;
+      var list=pts();
+      if(list.length===2){
+        pinchStartDist=dist(list[0],list[1]); pinchStartScale=scale;
+      } else if(list.length===1){
+        swipeStartX=e.clientX; swipeStartY=e.clientY; swipeStartT=Date.now();
+        panLastX=e.clientX; panLastY=e.clientY;
+        lbZoomWrap.classList.add('dragging');
+      }
+    });
+    lbStage.addEventListener('pointermove', function(e){
+      if(!pointers[e.pointerId]) return;
+      pointers[e.pointerId]={x:e.clientX,y:e.clientY};
+      var list=pts();
+      if(list.length===2){
+        var d=dist(list[0],list[1]);
+        if(pinchStartDist>0){
+          scale=Math.min(MAXSCALE, Math.max(1, pinchStartScale*(d/pinchStartDist)));
+          clampPan(); applyTransform(false);
+          lbZoomBtn.setAttribute('aria-pressed', scale>1.02 ? 'true':'false');
+          lbStage.classList.toggle('is-zoomed', scale>1.02);
+        }
+        moved=true;
+      } else if(list.length===1){
+        var dx=e.clientX-panLastX, dy=e.clientY-panLastY;
+        if(Math.abs(e.clientX-swipeStartX)>6||Math.abs(e.clientY-swipeStartY)>6) moved=true;
+        if(scale>1){
+          tx += dx/scale; ty += dy/scale;
+          clampPan(); applyTransform(false);
+        }
+        panLastX=e.clientX; panLastY=e.clientY;
+      }
+    });
+    function endPointer(e){
+      var wasSingle = pts().length===1;
+      delete pointers[e.pointerId];
+      lbZoomWrap.classList.remove('dragging');
+      if(wasSingle && scale===1){
+        var dx=e.clientX-swipeStartX, dy=e.clientY-swipeStartY;
+        var dt=Date.now()-swipeStartT;
+        if(!moved && dt<300){
+          var now=Date.now();
+          if(now-lastTapT<320 && Math.abs(e.clientX-lastTapX)<30 && Math.abs(e.clientY-lastTapY)<30){
+            toggleZoom(); lastTapT=0;
+          } else { lastTapT=now; lastTapX=e.clientX; lastTapY=e.clientY; }
+        } else if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.3 && dt<600 && curGallery.length>1){
+          showImg(dx<0 ? curIndex+1 : curIndex-1);
+        }
+      } else if(scale>1 && pts().length===0){
+        if(scale<=1.03) setZoom(false,true);
+      }
+    }
+    lbStage.addEventListener('pointerup', endPointer);
+    lbStage.addEventListener('pointercancel', endPointer);
+    lbStage.addEventListener('wheel', function(e){
+      if(!e.ctrlKey) return;
+      e.preventDefault();
+      scale = Math.min(MAXSCALE, Math.max(1, scale - e.deltaY*0.012));
+      clampPan(); applyTransform(false);
+      var on = scale>1.02;
+      lbZoomBtn.setAttribute('aria-pressed', on ? 'true':'false');
+      lbStage.classList.toggle('is-zoomed', on);
+    },{passive:false});
+  })();
 
   // formulário da apresentação
   var form=document.getElementById('form'), gate=document.getElementById('gate');
