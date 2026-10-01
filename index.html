@@ -361,13 +361,20 @@
   .gate{background:var(--surface-2);border:1px solid var(--line-2);
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,4vw,64px);
     padding:clamp(26px,4.4vw,64px)}
-  .cta-direct{display:flex;flex-direction:column;gap:14px;justify-content:center;
+  .form{display:flex;flex-direction:column;gap:14px}
+  .field label{display:block;font-family:var(--display);font-weight:600;font-size:10px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--nevoa);margin-bottom:7px}
+  .field input{width:100%;background:#000;border:1px solid var(--line-2);color:#fff;
+    font-family:var(--body);font-size:16px;padding:14px 16px;border-radius:4px;transition:.2s;
+    -webkit-user-select:text;user-select:text}
+  .field input:focus{border-color:var(--amarelo);outline:none}
+  .form .btn{justify-content:center;margin-top:6px}
+  .form .legal{font-size:12px;color:var(--nevoa);line-height:1.6}
+  .done{display:none;flex-direction:column;gap:14px;justify-content:center;
     border-left:3px solid var(--amarelo);padding-left:20px}
-  .cta-direct .btn{justify-content:center;align-self:flex-start}
-  .cta-direct .legal{font-size:12px;color:var(--nevoa);line-height:1.6}
-  .cta-direct .legal a{color:var(--nevoa);text-decoration:underline;text-underline-offset:3px}
-  .cta-direct .legal a:hover{color:var(--amarelo)}
-  @media(max-width:860px){.gate{grid-template-columns:1fr}.cta-direct{border-left:none;border-top:3px solid var(--amarelo);padding-left:0;padding-top:20px}}
+  .gate.sent .form{display:none}
+  .gate.sent .done{display:flex}
+  @media(max-width:860px){.gate{grid-template-columns:1fr}}
 
   /* cta + rodapé */
   .cta{text-align:center;border-top:1px solid var(--line)}
@@ -674,11 +681,22 @@
     <div>
       <p class="eyebrow">Fale com a gente</p>
       <h2 style="margin-block:16px 18px;font-size:clamp(28px,3.8vw,46px)">Vamos conversar sobre sua ideia, com um café?</h2>
-      <p class="lede">Conta pra gente o que você tem em mente. A gente topa uma conversa, no WhatsApp ou pessoalmente, pra entender o projeto e mostrar como a Kordon pode ajudar.</p>
+      <p class="lede">Deixe seus dados que a gente entra em contato pra marcar essa conversa, pessoalmente ou por chamada.</p>
     </div>
-    <div class="cta-direct">
-      <a class="btn" href="https://wa.me/5511972648448?text=Oi!%20Vi%20o%20site%20da%20Kordon%20e%20queria%20trocar%20uma%20ideia%20%F0%9F%91%8B" target="_blank" rel="noopener">Chamar no WhatsApp</a>
-      <p class="legal">Ou, se preferir, <a href="mailto:contato@kordon.com.br">manda um e-mail</a>.</p>
+    <form class="form" id="form" novalidate>
+      <div class="field"><label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar" required></div>
+      <div class="field"><label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" required></div>
+      <div class="field"><label for="fone">Celular <span style="color:var(--line-2)">(opcional)</span></label>
+        <input id="fone" name="fone" type="tel" autocomplete="tel" placeholder="(11) 90000-0000"></div>
+      <button class="btn" type="submit">Quero conversar</button>
+      <p class="legal">Ao enviar, você concorda em ser contatado pela Kordon. Seus dados não são compartilhados com terceiros.</p>
+    </form>
+    <div class="done">
+      <p class="eyebrow">Recebido</p>
+      <h3 style="font-size:clamp(20px,2.6vw,30px)">Já estamos com seus dados</h3>
+      <p class="lede" id="done-msg">A gente entra em contato em breve pra marcar essa conversa.</p>
     </div>
   </div>
 </section>
@@ -1629,6 +1647,25 @@
       lbStage.classList.toggle('is-zoomed', on);
     },{passive:false});
   })();
+
+  // formulário de contato
+  var form=document.getElementById('form'), gate=document.getElementById('gate');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nome=form.nome.value.trim(), mail=form.email.value.trim(), fone=form.fone.value.trim();
+    if(!nome||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){
+      [form.nome,form.email].forEach(function(f){
+        f.style.borderColor = f.value.trim() ? '' : '#B8912A';
+      });
+      return;
+    }
+    var corpo='Nome: '+nome+'\nE-mail: '+mail+'\nCelular: '+(fone||'não informado');
+    var mailto='mailto:contato@kordon.com.br?subject='+encodeURIComponent('Novo contato pelo site — '+nome)+'&body='+encodeURIComponent(corpo);
+    window.location.href=mailto;
+    document.getElementById('done-msg').textContent =
+      'Se o seu e-mail não abriu sozinho, pode nos chamar direto em contato@kordon.com.br.';
+    gate.classList.add('sent');
+  });
 
   // travas de cópia
   var toast=document.getElementById('toast'), tm;
