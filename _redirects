@@ -29,3 +29,9 @@
 /tkc                  /cultura   301
 /leis-de-incentivo    /cultura   301
 /culture              /cultura   301
+# Padrões reais encontrados no Google (site antigo do Wix)
+/projetoskordon       /          301
+/projetoskordon/*     /          301
+/project-title-*      /          301
+/meu-projeto          /          301
+/bola-de-prata        /          301
